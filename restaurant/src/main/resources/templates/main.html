@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
 </head>
 <body>
-main page
+<h1>main page</h1>
+<p th:text="${id}"></p>
+<p th:text="${role}"></p>
 </body>
 </html>

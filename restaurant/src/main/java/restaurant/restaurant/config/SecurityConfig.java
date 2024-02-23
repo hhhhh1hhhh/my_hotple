@@ -35,8 +35,8 @@ public BCryptPasswordEncoder bCryptPasswordEncoder() {
                         .permitAll()
                 );
 
-        http
-                .csrf((auth) -> auth.disable());
+//        http
+//                .csrf((auth) -> auth.disable());
         http
                 .sessionManagement((auth) -> auth
                         .maximumSessions(1)
@@ -44,6 +44,9 @@ public BCryptPasswordEncoder bCryptPasswordEncoder() {
         http
                 .sessionManagement((auth) -> auth
                         .sessionFixation().changeSessionId());
+        http
+                .logout((auth) -> auth.logoutUrl("/logout")
+                        .logoutSuccessUrl("/"));
 
         return http.build();
     }

@@ -1,12 +1,78 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/mainmap.css}"
+          href="../css/mainMap.css" rel="stylesheet">
+    <title>My Hotple Main Page</title>
 </head>
 <body>
-<h1>main page</h1>
-<p th:text="${id}"></p>
-<p th:text="${role}"></p>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid" bis_skin_checked="1">
+        <a class="navbar-brand" href="/">My Hotple</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01" bis_skin_checked="1">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Place</a>
+                </li>
+            </ul>
+            <div class="btn-group" role="group" aria-label="Basic example" bis_skin_checked="1">
+                <button type="button"
+                        class="btn btn-secondary"
+                        onclick="location.href='login.html'"
+                        th:onclick="|location.href='@{/login}'|">Login</button>
+                <button type="button"
+                        class="btn btn-secondary"
+                        onclick="location.href='join.html'"
+                        th:onclick="|location.href='@{/join}'|">Join</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<h2 align="center" style="margin-top: 50px; margin-bottom: 50px">나만의 장소를 저장하세요!</h2>
+<div class="map_wrap">
+    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+    <div id="menu_wrap" class="bg_white">
+        <div class="option">
+            <div>
+                <form onsubmit="searchPlaces(); return false;">
+                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
+                    <button type="submit">검색하기</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <ul id="placesList"></ul>
+        <div id="pagination"></div>
+    </div>
+</div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dd6b3f845722d3c2dbd4187f59ed228d&libraries=services"></script>
+<!--<script src="../js/mainMap.js"></script>-->
+<script type="text/javascript" th:src="@{/js/mainMap.js}"></script>
+<div style="text-align: center; margin-top: 60px; margin-bottom: 60px " >
+    <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+    <p><small>This line of text is meant to be treated as fine print.</small></p>
+    <p>The following is <strong>rendered as bold text</strong>.</p>
+    <p>The following is <em>rendered as italicized text</em>.</p>
+    <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
+</div>
+<!--<p th:text="${id}"></p>-->
+<!--<p th:text="${role}"></p>-->
 </body>
 </html>

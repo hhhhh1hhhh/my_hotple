@@ -2,13 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>My Hotple Join Page</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid" bis_skin_checked="1">
+        <a class="navbar-brand" href="/">My Hotple</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01" bis_skin_checked="1">
+            <ul class="navbar-nav me-auto">
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link active" href="/">Home-->
+<!--                        <span class="visually-hidden">(current)</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Board</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Place</a>
+                </li>
+            </ul>
+            <div class="btn-group" role="group" aria-label="Basic example" bis_skin_checked="1">
+                <button type="button"
+                        class="btn btn-secondary"
+                        onclick="location.href='login.html'"
+                        th:onclick="|location.href='@{/login}'|">Login</button>
+            </div>
+        </div>
+    </div>
+</nav>
 <form action="/joinProc" method="post" name="joinForm">
     <input type="text" name="username" placeholder="Username"/>
     <input type="password" name="password" placeholder="Password"/>
     <input type="submit" value="Join"/>
 </form>
+
+<div class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto; text-align: center;">
+    <h2 style="margin-top: 50px; margin-bottom: 50px">회원가입</h2>
+<!--    <label class="form-label mt-4">회원가입</label>-->
+    <div class="form-floating mb-3" bis_skin_checked="1">
+        <input type="email" class="form-control" id="floatingName" placeholder="name">
+        <label for="floatingName">이름</label>
+    </div>
+    <div class="form-floating mb-3" bis_skin_checked="1">
+        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+        <label for="floatingEmail">이메일</label>
+    </div>
+    <div class="form-floating mb-3" bis_skin_checked="1">
+        <input type="email" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="off">
+        <label for="floatingPassword">비밀번호</label>
+    </div>
+    <div class="form-floating" bis_skin_checked="1">
+        <input type="password" class="form-control" id="floatingPasswordCheck" placeholder="Password" autocomplete="off">
+        <label for="floatingPasswordCheck">비밀번호 확인</label>
+    </div>
+</div>
+
+<div class="d-grid gap-2" bis_skin_checked="1" style="width: 40%; margin-left: auto; margin-right: auto; text-align: center; margin-top: 30px">
+    <button class="btn btn-lg btn-primary" type="button">Join</button>
+</div>
+<!--<div class="form-group has-success" bis_skin_checked="1">-->
+<!--    <label class="form-label mt-4" for="inputValid">Valid input</label>-->
+<!--    <input type="text" value="correct value" class="form-control is-valid" id="inputValid">-->
+<!--    <div class="valid-feedback" bis_skin_checked="1">Success! You've done it.</div>-->
+<!--</div>-->
+<!--<div class="form-group has-danger" bis_skin_checked="1">-->
+<!--    <label class="form-label mt-4" for="inputInvalid">Invalid input</label>-->
+<!--    <input type="text" value="wrong value" class="form-control is-invalid" id="inputInvalid">-->
+<!--    <div class="invalid-feedback" bis_skin_checked="1">Sorry, that username's taken. Try another?</div>-->
+<!--</div>-->
+<!--<div class="form-group" bis_skin_checked="1">-->
+<!--    <label class="col-form-label col-form-label-lg mt-4" for="inputLarge">Large input</label>-->
+<!--    <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" id="inputLarge">-->
+<!--</div>-->
 </body>
 </html>

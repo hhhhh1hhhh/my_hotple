@@ -15,11 +15,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01" bis_skin_checked="1">
             <ul class="navbar-nav me-auto">
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link active" href="/">Home-->
-<!--                        <span class="visually-hidden">(current)</span>-->
-<!--                    </a>-->
-<!--                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="#">Home</a>
                 </li>
@@ -42,21 +37,16 @@
         </div>
     </div>
 </nav>
-<!--<form action="/joinProc" method="post" name="joinForm">-->
-<!--    <input type="text" name="username" placeholder="Username"/>-->
-<!--    <input type="password" name="password" placeholder="Password"/>-->
-<!--    <input type="submit" value="Join"/>-->
-<!--</form>-->
 
 <form th:action="@{/joinProc}" method="post" name="joinForm">
     <div class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto; text-align: center;">
         <h2 style="margin-top: 50px; margin-bottom: 50px">회원가입</h2>
         <div class="form-floating mb-3" bis_skin_checked="1">
-            <input type="text" class="form-control" name="username" id="floatingName" placeholder="name">
+            <input type="text" class="form-control" name="nickname" id="floatingName" placeholder="name">
             <label for="floatingName">이름</label>
         </div>
         <div class="form-floating mb-3" bis_skin_checked="1">
-            <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="name@example.com">
+            <input type="email" class="form-control" name="username" id="floatingEmail" placeholder="name@example.com">
             <label for="floatingEmail">이메일</label>
         </div>
         <div class="form-floating mb-3" bis_skin_checked="1">

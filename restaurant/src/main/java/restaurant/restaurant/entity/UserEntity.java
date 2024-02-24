@@ -14,9 +14,9 @@ public class UserEntity {
     private int id;
 
     @Column(unique = true)
-    private String email;
+    private String username; // 이메일
 
-    private String username;
+    private String nickname; // 이름
 
     private String password;
 

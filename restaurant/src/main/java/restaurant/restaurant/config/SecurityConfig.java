@@ -33,11 +33,9 @@ public BCryptPasswordEncoder bCryptPasswordEncoder() {
                 .formLogin((auth) -> auth
                         .loginPage("/login")
                         .loginProcessingUrl("/loginProc")
+                        .defaultSuccessUrl("/main")
                         .permitAll()
                 );
-
-//        http
-//                .csrf((auth) -> auth.disable());
         http
                 .sessionManagement((auth) -> auth
                         .maximumSessions(1)
@@ -47,7 +45,10 @@ public BCryptPasswordEncoder bCryptPasswordEncoder() {
                         .sessionFixation().changeSessionId());
         http
                 .logout((auth) -> auth.logoutUrl("/logout")
-                        .logoutSuccessUrl("/"));
+                        .logoutSuccessUrl("/login")
+                        .deleteCookies("JSESSIONID", "REMEMBER-ME")
+                        .invalidateHttpSession(true));
+
 
         return http.build();
     }

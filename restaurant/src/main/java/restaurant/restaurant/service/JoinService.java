@@ -23,7 +23,7 @@ public class JoinService {
     public void joinProcess(JoinDTO joinDTO) {
 
         // db에 이미 동일한 username을 가진 회원이 존재하는지 검증
-        boolean isUser = userRepository.existsByUsername(joinDTO.getUsername());
+        boolean isUser = userRepository.existsByEmail(joinDTO.getUsername());
         if (isUser) {
             return;
         }
@@ -31,6 +31,7 @@ public class JoinService {
 
         UserEntity data = new UserEntity();
 
+        data.setEmail(joinDTO.getEmail());
         data.setUsername(joinDTO.getUsername());
         data.setPassword(bCryptPasswordEncoder.encode(joinDTO.getPassword()));
         data.setRole("ROLE_ADMIN");

@@ -42,36 +42,38 @@
         </div>
     </div>
 </nav>
-<form action="/joinProc" method="post" name="joinForm">
-    <input type="text" name="username" placeholder="Username"/>
-    <input type="password" name="password" placeholder="Password"/>
-    <input type="submit" value="Join"/>
+<!--<form action="/joinProc" method="post" name="joinForm">-->
+<!--    <input type="text" name="username" placeholder="Username"/>-->
+<!--    <input type="password" name="password" placeholder="Password"/>-->
+<!--    <input type="submit" value="Join"/>-->
+<!--</form>-->
+
+<form th:action="@{/joinProc}" method="post" name="joinForm">
+    <div class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto; text-align: center;">
+        <h2 style="margin-top: 50px; margin-bottom: 50px">회원가입</h2>
+        <div class="form-floating mb-3" bis_skin_checked="1">
+            <input type="text" class="form-control" name="username" id="floatingName" placeholder="name">
+            <label for="floatingName">이름</label>
+        </div>
+        <div class="form-floating mb-3" bis_skin_checked="1">
+            <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="name@example.com">
+            <label for="floatingEmail">이메일</label>
+        </div>
+        <div class="form-floating mb-3" bis_skin_checked="1">
+            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" autocomplete="off">
+            <label for="floatingPassword">비밀번호</label>
+        </div>
+<!--        <div class="form-floating" bis_skin_checked="1">-->
+<!--            <input type="password" class="form-control" id="floatingPasswordCheck" placeholder="Password" autocomplete="off">-->
+<!--            <label for="floatingPasswordCheck">비밀번호 확인</label>-->
+<!--        </div>-->
+    </div>
+    <div class="d-grid gap-2" bis_skin_checked="1" style="width: 40%; margin-left: auto; margin-right: auto; text-align: center; margin-top: 30px">
+        <button class="btn btn-lg btn-primary" type="submit">Join</button>
+    </div>
 </form>
 
-<div class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto; text-align: center;">
-    <h2 style="margin-top: 50px; margin-bottom: 50px">회원가입</h2>
-<!--    <label class="form-label mt-4">회원가입</label>-->
-    <div class="form-floating mb-3" bis_skin_checked="1">
-        <input type="email" class="form-control" id="floatingName" placeholder="name">
-        <label for="floatingName">이름</label>
-    </div>
-    <div class="form-floating mb-3" bis_skin_checked="1">
-        <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
-        <label for="floatingEmail">이메일</label>
-    </div>
-    <div class="form-floating mb-3" bis_skin_checked="1">
-        <input type="email" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="off">
-        <label for="floatingPassword">비밀번호</label>
-    </div>
-    <div class="form-floating" bis_skin_checked="1">
-        <input type="password" class="form-control" id="floatingPasswordCheck" placeholder="Password" autocomplete="off">
-        <label for="floatingPasswordCheck">비밀번호 확인</label>
-    </div>
-</div>
 
-<div class="d-grid gap-2" bis_skin_checked="1" style="width: 40%; margin-left: auto; margin-right: auto; text-align: center; margin-top: 30px">
-    <button class="btn btn-lg btn-primary" type="button">Join</button>
-</div>
 <!--<div class="form-group has-success" bis_skin_checked="1">-->
 <!--    <label class="form-label mt-4" for="inputValid">Valid input</label>-->
 <!--    <input type="text" value="correct value" class="form-control is-valid" id="inputValid">-->

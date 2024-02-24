@@ -25,7 +25,7 @@ public class JoinController {
     @PostMapping("/joinProc")
     public String joinProcess(JoinDTO joinDTO) {
 
-        System.out.println(joinDTO.getUsername());
+//        System.out.println(joinDTO.getUsername());
 
         joinService.joinProcess(joinDTO);
 

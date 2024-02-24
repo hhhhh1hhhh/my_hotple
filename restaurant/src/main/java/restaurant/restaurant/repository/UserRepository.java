@@ -5,7 +5,11 @@ import restaurant.restaurant.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
-    boolean existsByUsername(String username);
+//    boolean existsByUsername(String username);
+//
+//    UserEntity findByUsername(String username);
 
-    UserEntity findByUsername(String username);
+    boolean existsByEmail(String email);
+
+    UserEntity findByEmail(String email);
 }

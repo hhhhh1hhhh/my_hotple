@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <link th:href="@{/css/bootstrap.min.css}"
           href="../css/bootstrap.min.css" rel="stylesheet">
-    <link th:href="@{/css/mainmap.css}"
-          href="../css/mainMap.css" rel="stylesheet">
-    <title>My Hotple Main Page</title>
+    <title>My Hotple myplace page</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -49,32 +47,5 @@
         </div>
     </div>
 </nav>
-<h2 align="center" style="margin-top: 50px; margin-bottom: 50px">나만의 장소를 저장하세요!</h2>
-<div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-    <div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
-                    <button type="submit">검색하기</button>
-                </form>
-            </div>
-        </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
-    </div>
-</div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=dd6b3f845722d3c2dbd4187f59ed228d&libraries=services"></script>
-<!--<script src="../js/mainMap.js"></script>-->
-<script type="text/javascript" th:src="@{/js/mainMap.js}"></script>
-<div style="text-align: center; margin-top: 60px; margin-bottom: 60px " >
-    <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-    <p><small>This line of text is meant to be treated as fine print.</small></p>
-    <p>The following is <strong>rendered as bold text</strong>.</p>
-    <p>The following is <em>rendered as italicized text</em>.</p>
-    <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
-</div>
 </body>
 </html>

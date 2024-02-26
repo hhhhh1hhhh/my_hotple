@@ -1,11 +1,14 @@
 package restaurant.restaurant.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import restaurant.restaurant.service.CustomAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -17,13 +20,19 @@ public BCryptPasswordEncoder bCryptPasswordEncoder() {
     return new BCryptPasswordEncoder();
 }
 
+@Bean
+public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new CustomAuthenticationSuccessHandler();
+    }
+
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/", "/login", "/join", "/joinProc", "/map", "check_duplicate",
-                                "/css/**", "/js/**").permitAll()
+                                "/js/**", "/css/**").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/my/**").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
@@ -34,6 +43,9 @@ public BCryptPasswordEncoder bCryptPasswordEncoder() {
                         .loginPage("/login")
                         .loginProcessingUrl("/loginProc")
                         .defaultSuccessUrl("/main")
+                        .successHandler(authenticationSuccessHandler())
+                        .usernameParameter("username")
+                        .passwordParameter("password")
                         .permitAll()
                 );
         http

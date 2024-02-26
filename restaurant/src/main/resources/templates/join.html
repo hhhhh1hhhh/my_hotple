@@ -5,6 +5,8 @@
     <link th:href="@{/css/bootstrap.min.css}"
           href="../css/bootstrap.min.css" rel="stylesheet">
     <title>My Hotple Join Page</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/join.js}"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -42,41 +44,30 @@
     <div class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto; text-align: center;">
         <h2 style="margin-top: 50px; margin-bottom: 50px">회원가입</h2>
         <div class="form-floating mb-3" bis_skin_checked="1">
-            <input type="text" class="form-control" name="nickname" id="floatingName" placeholder="name">
-            <label for="floatingName">이름</label>
+            <input type="text" class="form-control" name="nickname" id="nickname" required pattern="^[가-힣a-zA-Z]{1,50}$" placeholder="nickname">
+            <label for="nickname">이름</label>
+            <p id="nicknameMessage"></p>
         </div>
         <div class="form-floating mb-3" bis_skin_checked="1">
-            <input type="email" class="form-control" name="username" id="floatingEmail" placeholder="name@example.com">
-            <label for="floatingEmail">이메일</label>
+            <input type="email" class="form-control" name="username" id="username" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="name@example.com">
+            <label for="username">이메일</label>
+            <p id="usernameMessage"></p>
         </div>
         <div class="form-floating mb-3" bis_skin_checked="1">
-            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password" autocomplete="off">
-            <label for="floatingPassword">비밀번호</label>
+            <input type="password" class="form-control" name="password" id="password"  required pattern="^[A-Za-z\d@$!%*?&\-_#]{8,16}$" placeholder="Password" autocomplete="off">
+            <label for="password">비밀번호</label>
+            <p id="passwordMessage"></p>
         </div>
-<!--        <div class="form-floating" bis_skin_checked="1">-->
-<!--            <input type="password" class="form-control" id="floatingPasswordCheck" placeholder="Password" autocomplete="off">-->
-<!--            <label for="floatingPasswordCheck">비밀번호 확인</label>-->
-<!--        </div>-->
+        <div class="form-floating" bis_skin_checked="1">
+            <input type="password" class="form-control" id="confirm_password" placeholder="Password" autocomplete="off">
+            <label for="confirm_password">비밀번호 확인</label>
+            <p id="message"></p>
+
+        </div>
     </div>
     <div class="d-grid gap-2" bis_skin_checked="1" style="width: 40%; margin-left: auto; margin-right: auto; text-align: center; margin-top: 30px">
         <button class="btn btn-lg btn-primary" type="submit">Join</button>
     </div>
 </form>
-
-
-<!--<div class="form-group has-success" bis_skin_checked="1">-->
-<!--    <label class="form-label mt-4" for="inputValid">Valid input</label>-->
-<!--    <input type="text" value="correct value" class="form-control is-valid" id="inputValid">-->
-<!--    <div class="valid-feedback" bis_skin_checked="1">Success! You've done it.</div>-->
-<!--</div>-->
-<!--<div class="form-group has-danger" bis_skin_checked="1">-->
-<!--    <label class="form-label mt-4" for="inputInvalid">Invalid input</label>-->
-<!--    <input type="text" value="wrong value" class="form-control is-invalid" id="inputInvalid">-->
-<!--    <div class="invalid-feedback" bis_skin_checked="1">Sorry, that username's taken. Try another?</div>-->
-<!--</div>-->
-<!--<div class="form-group" bis_skin_checked="1">-->
-<!--    <label class="col-form-label col-form-label-lg mt-4" for="inputLarge">Large input</label>-->
-<!--    <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" id="inputLarge">-->
-<!--</div>-->
 </body>
 </html>

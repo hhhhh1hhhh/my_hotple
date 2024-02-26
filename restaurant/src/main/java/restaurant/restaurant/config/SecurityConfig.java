@@ -22,7 +22,7 @@ public BCryptPasswordEncoder bCryptPasswordEncoder() {
 
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/", "/login", "/join", "/joinProc", "/map",
+                        .requestMatchers("/", "/login", "/join", "/joinProc", "/map", "check_duplicate",
                                 "/css/**", "/js/**").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/my/**").hasAnyRole("ADMIN", "USER")

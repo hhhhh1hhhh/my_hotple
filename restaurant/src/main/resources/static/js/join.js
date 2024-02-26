@@ -23,6 +23,7 @@ $(document).ready(function () {
         $('#nickname').val(''); // 이름 입력 필드 초기화
         $('#username').val(''); // 이메일 입력 필드 초기화
 
+
         $(document).ready(function () {
             $('#nickname').on('input', function () {
                 var input = $(this);
@@ -152,7 +153,15 @@ $(document).ready(function () {
                 //     e.preventDefault(); // 폼 제출 막기
                 //     $('#usernameMessage').html('사용할 수 없는 이메일입니다.').css('color', 'red');
                 // }
+
+                if (isNicknameValid && isPasswordValid && isUsernameValid && ($('#password').val() === $('#confirm_password').val())) {
+                    alert('회원가입이 완료되었습니다');
+                }
+
+
             });
+
+
         });
     });
 });

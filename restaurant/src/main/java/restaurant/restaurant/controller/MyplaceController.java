@@ -21,4 +21,10 @@ public class MyplaceController {
         return "myplace";
     }
 
+    @GetMapping("/myplace_write")
+    public String myplacWriteP(Model model) {
+        authService.setUserData(model);
+        return "myplace_write";
+    }
+
 }

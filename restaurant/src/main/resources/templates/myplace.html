@@ -16,10 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01" bis_skin_checked="1">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/main">Home
-                        <span class="visually-hidden">(current)</span>
-                    </a>
-
+                    <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Map</a>
@@ -28,7 +25,9 @@
                     <a class="nav-link" href="#">Board</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/myplace">My Place</a>
+                    <a class="nav-link active" href="/myplace">My Place
+                        <span class="visually-hidden">(current)</span>
+                    </a>
                 </li>
             </ul>
             <div>
@@ -47,5 +46,34 @@
         </div>
     </div>
 </nav>
+<h2 style="margin-top: 50px; margin-bottom: 50px; text-align: center">My Place List</h2>
+<div class="d-flex justify-content-end mb-3">
+    <button type="button" class="btn btn-secondary"
+            style="margin-right: 150px; margin-bottom: 20px"
+            onclick="location.href='myplace_write.html.html'"
+            th:onclick="|location.href='@{/myplace_write}'|">장소 추가하기</button>
+</div>
+<div class="row justify-content-center">
+    <!-- 첫 번째 Card -->
+    <div class="col-md-5">
+        <div class="card border-secondary mb-3" style="text-align: center">
+            <div class="card-header">정동진</div>
+            <div class="card-body">
+                <h4 class="card-title">강원특별자치도 강릉시 강동면 정동진리 </h4>
+                <p class="card-text">해돋이 명소입니다.</p>
+            </div>
+        </div>
+    </div>
+    <!-- 두 번째 Card -->
+    <div class="col-md-5">
+        <div class="card border-secondary mb-3" style="text-align: center">
+            <div class="card-header">독도</div>
+            <div class="card-body">
+                <h4 class="card-title">경상북도 울릉군 울릉읍 독도안용복길 3</h4>
+                <p class="card-text">독도는 우리 땅입니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

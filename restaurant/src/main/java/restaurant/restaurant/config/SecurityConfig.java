@@ -1,13 +1,14 @@
 package restaurant.restaurant.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import restaurant.restaurant.service.CustomAuthenticationFailureHandler;
 import restaurant.restaurant.service.CustomAuthenticationSuccessHandler;
 
 @Configuration
@@ -21,9 +22,14 @@ public BCryptPasswordEncoder bCryptPasswordEncoder() {
 }
 
 @Bean
+public AuthenticationFailureHandler authenticationFailureHandler () {
+    return new CustomAuthenticationFailureHandler();
+}
+@Bean
 public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return new CustomAuthenticationSuccessHandler();
     }
+
 
 
     @Bean
@@ -44,7 +50,9 @@ public AuthenticationSuccessHandler authenticationSuccessHandler() {
                         .loginPage("/login")
                         .loginProcessingUrl("/loginProc")
                         .defaultSuccessUrl("/main")
+//                        .failureUrl("/login?error")
                         .successHandler(authenticationSuccessHandler())
+                        .failureHandler(authenticationFailureHandler())
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .permitAll()

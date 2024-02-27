@@ -34,4 +34,5 @@ public class JoinController {
         return "redirect:/login";
     }
 
+
 }

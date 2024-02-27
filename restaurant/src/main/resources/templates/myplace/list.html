@@ -25,7 +25,7 @@
                     <a class="nav-link" href="#">Board</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/myplace">My Place
+                    <a class="nav-link active" href="/myplace/list">My Place
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
@@ -50,8 +50,8 @@
 <div class="d-flex justify-content-end mb-3">
     <button type="button" class="btn btn-secondary"
             style="margin-right: 150px; margin-bottom: 20px"
-            onclick="location.href='myplace_write.html.html'"
-            th:onclick="|location.href='@{/myplace_write}'|">장소 추가하기</button>
+            onclick="location.href='myplace/write.html'"
+            th:onclick="|location.href='@{/myplace/write}'|">장소 추가하기</button>
 </div>
 <div class="row justify-content-center">
     <!-- 첫 번째 Card -->

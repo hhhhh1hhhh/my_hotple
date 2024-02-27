@@ -1,5 +1,6 @@
 package restaurant.restaurant.service;
 
+import jakarta.transaction.Transactional;
 import org.aspectj.lang.annotation.Around;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,5 +45,6 @@ public class JoinService {
         userRepository.save(data);
 
     }
+
 
 }

@@ -31,7 +31,7 @@
                 </li>
             </ul>
             <div>
-                <span class="navbar-text" style="margin-right: 30px" th:if="${id != null}">안녕하세요, <span th:text="${id}" ></span>님!</span>
+                <span class="navbar-text" style="margin-right: 30px" th:if="${nickname != null}">안녕하세요, <span th:text="${nickname}" ></span>님!</span>
             </div>
             <form id="logoutForm" action="/logout" method="post">
                 <div class="btn-group" role="group" aria-label="Basic example" bis_skin_checked="1">

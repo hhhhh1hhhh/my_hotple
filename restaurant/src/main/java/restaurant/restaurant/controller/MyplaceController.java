@@ -38,6 +38,7 @@ public class MyplaceController {
     @PostMapping("/save")
     public String myplaceSave(@ModelAttribute MyplaceDTO myplaceDTO) {
         System.out.println("myplaceDTO = " + myplaceDTO);
+
         myplaceService.save(myplaceDTO);
 
         return "myplace/list";

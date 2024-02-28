@@ -1,6 +1,7 @@
 package restaurant.restaurant.dto;
 
 import lombok.*;
+import restaurant.restaurant.entity.UserEntity;
 
 import java.time.LocalDateTime;
 
@@ -21,5 +22,12 @@ public class MyplaceDTO {
     private int views;
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
-}
 
+    // user_id 필드를 getUserId() 메서드로 변경
+    private int userId;
+
+    // 수정된 생성자 추가
+    public MyplaceDTO(int userId) {
+        this.userId = userId;
+    }
+}

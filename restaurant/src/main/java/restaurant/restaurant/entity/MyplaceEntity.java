@@ -45,6 +45,10 @@ public class MyplaceEntity extends BaseEntity{
         this.user.setId(userId);
     }
 
+    // userId 값을 반환하는 메서드
+    public int getUserId() {
+        return this.user != null ? this.user.getId() : 0;
+    }
 
     public static MyplaceEntity toSaveEntity(MyplaceDTO myplaceDTO) {
         MyplaceEntity myplaceEntity = new MyplaceEntity();
@@ -56,7 +60,6 @@ public class MyplaceEntity extends BaseEntity{
         myplaceEntity.setLikes(0);
         myplaceEntity.setShare(myplaceDTO.isShare());
         myplaceEntity.setUserId(myplaceDTO.getUserId());
-
 
         return myplaceEntity;
 

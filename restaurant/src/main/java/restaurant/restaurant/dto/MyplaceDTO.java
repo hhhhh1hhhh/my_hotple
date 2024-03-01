@@ -1,6 +1,7 @@
 package restaurant.restaurant.dto;
 
 import lombok.*;
+import restaurant.restaurant.entity.MyplaceEntity;
 import restaurant.restaurant.entity.UserEntity;
 
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor // 모든 필드를 매개변수로 하는 생성자
 public class MyplaceDTO {
 
+    private int id;
     private String placeName;
     private String address;
     private String category;
@@ -30,4 +32,24 @@ public class MyplaceDTO {
     public MyplaceDTO(int userId) {
         this.userId = userId;
     }
+
+    public static MyplaceDTO toMyplaceDTO(MyplaceEntity myplaceEntity) {
+        MyplaceDTO myplaceDTO = new MyplaceDTO();
+
+        myplaceDTO.setId(myplaceEntity.getId());
+        myplaceDTO.setPlaceName(myplaceEntity.getPlaceName());
+        myplaceDTO.setAddress(myplaceEntity.getAddress());
+        myplaceDTO.setCategory(myplaceEntity.getCategory());
+        myplaceDTO.setContents(myplaceEntity.getContents());
+        myplaceDTO.setViews(myplaceEntity.getViews());
+        myplaceDTO.setLikes(myplaceEntity.getLikes());
+        myplaceDTO.setCreatedTime(myplaceEntity.getCreatedTime());
+        myplaceDTO.setUpdatedTime(myplaceEntity.getUpdatedTime());
+        myplaceDTO.setShare(myplaceEntity.isShare());
+        myplaceDTO.setUserId(myplaceEntity.getUserId());
+
+        return myplaceDTO;
+
+    }
+
 }

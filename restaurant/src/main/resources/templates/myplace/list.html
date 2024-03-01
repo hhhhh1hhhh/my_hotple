@@ -22,7 +22,7 @@
                     <a class="nav-link" href="#">Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Board</a>
+                    <a class="nav-link" href="/shared">Shared Place</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="/myplace/list">My Place
@@ -53,24 +53,15 @@
             onclick="location.href='myplace/write.html'"
             th:onclick="|location.href='@{/myplace/write}'|">장소 추가하기</button>
 </div>
+
 <div class="row justify-content-center">
-    <!-- 첫 번째 Card -->
-    <div class="col-md-5">
-        <div class="card border-secondary mb-3" style="text-align: center">
-            <div class="card-header">정동진</div>
+    <div class="col-md-5" th:each="myplace: ${myplaceList}">
+        <div class="card border-secondary mb-3" style="text-align: center" >
+            <p class="card-header" th:text="'[' + ${myplace.category} + ']'" ></p>
+            <div class="card-header" ><a th:href="@{|/myplace/${myplace.id}|}" th:text="${myplace.placeName}"></a></div>
             <div class="card-body">
-                <h4 class="card-title">강원특별자치도 강릉시 강동면 정동진리 </h4>
-                <p class="card-text">해돋이 명소입니다.</p>
-            </div>
-        </div>
-    </div>
-    <!-- 두 번째 Card -->
-    <div class="col-md-5">
-        <div class="card border-secondary mb-3" style="text-align: center">
-            <div class="card-header">독도</div>
-            <div class="card-body">
-                <h4 class="card-title">경상북도 울릉군 울릉읍 독도안용복길 3</h4>
-                <p class="card-text">독도는 우리 땅입니다.</p>
+                <h4 class="card-title" th:text="${myplace.address}"></h4>
+                <p class="card-text"  th:text="${myplace.contents}"></p>
             </div>
         </div>
     </div>

@@ -36,7 +36,8 @@ public class MyplaceController {
     }
 
     @PostMapping("/save")
-    public String myplaceSave(@ModelAttribute MyplaceDTO myplaceDTO) {
+    public String myplaceSave(@ModelAttribute MyplaceDTO myplaceDTO, Model model) {
+        authService.setUserData(model);
         System.out.println("myplaceDTO = " + myplaceDTO);
 
         myplaceService.save(myplaceDTO);

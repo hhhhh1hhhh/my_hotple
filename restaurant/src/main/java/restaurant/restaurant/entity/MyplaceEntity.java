@@ -16,8 +16,10 @@ public class MyplaceEntity extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false)
     private String placeName; // 장소 이름
 
+    @Column(nullable = false)
     private String address; // 주소
 
     private String category; // 카테고리
@@ -35,7 +37,6 @@ public class MyplaceEntity extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
-//    @Column(nullable = false)
     private UserEntity user;
 
     // 다음 메서드를 이용하여 userId 값을 설정
@@ -53,6 +54,7 @@ public class MyplaceEntity extends BaseEntity{
         myplaceEntity.setContents(myplaceDTO.getContents());
         myplaceEntity.setViews(0);
         myplaceEntity.setLikes(0);
+        myplaceEntity.setShare(myplaceDTO.isShare());
         myplaceEntity.setUserId(myplaceDTO.getUserId());
 
 

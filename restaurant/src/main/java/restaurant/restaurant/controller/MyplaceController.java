@@ -3,13 +3,11 @@ package restaurant.restaurant.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import restaurant.restaurant.dto.MyplaceDTO;
 import restaurant.restaurant.service.AuthService;
 import restaurant.restaurant.service.MyplaceService;
+import restaurant.restaurant.service.SharedService;
 
 import java.util.List;
 
@@ -20,8 +18,8 @@ public class MyplaceController {
 
 
     private final AuthService authService;
-
     private final MyplaceService myplaceService;
+    private final SharedService sharedService;
 
 
     @GetMapping("/list")
@@ -34,8 +32,18 @@ public class MyplaceController {
     }
 
 
+    @GetMapping("/{id}")
+    public String findById(@PathVariable int id, Model model) {
+        authService.setUserData(model);
+
+        MyplaceDTO myplaceDTO = sharedService.findByPlaceId(id);
+        model.addAttribute("myplace", myplaceDTO);
+
+        return "myplace/detail";
+    }
+
     @GetMapping("/write")
-    public String myplacWrite(Model model) {
+    public String myplaceWrite(Model model) {
         authService.setUserData(model);
         return "myplace/write";
     }

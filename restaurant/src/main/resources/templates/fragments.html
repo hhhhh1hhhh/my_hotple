@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:fragment="main-head">
     <meta charset="UTF-8">
     <link th:href="@{/css/bootstrap.min.css}"
           href="../css/bootstrap.min.css" rel="stylesheet">
     <title>My Hotple Shared Place page</title>
 </head>
 <body>
-<nav <nav th:fragment="main-nav" class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav th:fragment="main-nav" class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid" bis_skin_checked="1">
         <a class="navbar-brand" href="/main">My Hotple</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,13 +16,13 @@
         <div class="collapse navbar-collapse" id="navbarColor01" bis_skin_checked="1">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Map</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/shared">Shared Place</a>
+                    <a class="nav-link" href="/shared/list">Shared Place</a>
                 </li>
 <!--                <li class="nav-item">-->
 <!--                    <a class="nav-link active" href="/shared">Shared Place-->
@@ -49,5 +49,6 @@
         </div>
     </div>
 </nav>
+
 </body>
 </html>

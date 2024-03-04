@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import restaurant.restaurant.dto.MyplaceDTO;
+import restaurant.restaurant.entity.MyplaceEntity;
 import restaurant.restaurant.service.AuthService;
 import restaurant.restaurant.service.MyplaceService;
 
@@ -28,4 +29,7 @@ public class SharedController {
 
         return "shared";
     }
+
+
+
 }

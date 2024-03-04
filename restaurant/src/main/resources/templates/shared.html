@@ -62,11 +62,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="table-active" th:each="myplace: ${myplaceList}">
+    <tr class="table-active" th:each="myplace: ${myplaceList}" th:if="${myplace.share eq true}">
 <!--        <th scope="row">Active</th>-->
         <td th:text="${myplace.id}"></td>
         <td th:text="${myplace.category}"></td>
-        <td><a th:href="@{|/myplace/${myplace.id}|}" th:text="${myplace.placeName}"></a></td>
+        <td><a th:href="@{|/myplace/${myplace.id}|}" th:text="${myplace.placeName} "></a></td>
         <td th:text="${myplace.userNickname}"></td>
         <td th:text="*{#temporals.format(myplace.createdTime, 'yyyy-MM-dd HH:mm')}"></td>
         <td th:text="${myplace.views}"></td>

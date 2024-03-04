@@ -39,15 +39,18 @@ public class MyplaceEntity extends BaseEntity{
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private UserEntity user;
 
-    // 다음 메서드를 이용하여 userId 값을 설정
     public void setUserId(int userId) {
         this.user = new UserEntity();
         this.user.setId(userId);
     }
 
-    // userId 값을 반환하는 메서드
     public int getUserId() {
         return this.user != null ? this.user.getId() : 0;
+    }
+
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public static MyplaceEntity toSaveEntity(MyplaceDTO myplaceDTO) {

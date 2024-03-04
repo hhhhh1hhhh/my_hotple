@@ -67,7 +67,7 @@
         <td th:text="${myplace.id}"></td>
         <td th:text="${myplace.category}"></td>
         <td><a th:href="@{|/myplace/${myplace.id}|}" th:text="${myplace.placeName}"></a></td>
-        <td th:text="${myplace.userId}"></td>
+        <td th:text="${myplace.userNickname}"></td>
         <td th:text="*{#temporals.format(myplace.createdTime, 'yyyy-MM-dd HH:mm')}"></td>
         <td th:text="${myplace.views}"></td>
         <td th:text="${myplace.likes}"></td>

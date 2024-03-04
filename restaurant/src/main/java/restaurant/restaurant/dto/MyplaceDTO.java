@@ -28,6 +28,10 @@ public class MyplaceDTO {
     // user_id 필드를 getUserId() 메서드로 변경
     private int userId;
 
+    private UserEntity user;
+
+    private String userNickname;
+
     // 수정된 생성자 추가
     public MyplaceDTO(int userId) {
         this.userId = userId;
@@ -47,6 +51,7 @@ public class MyplaceDTO {
         myplaceDTO.setUpdatedTime(myplaceEntity.getUpdatedTime());
         myplaceDTO.setShare(myplaceEntity.isShare());
         myplaceDTO.setUserId(myplaceEntity.getUserId());
+        myplaceDTO.setUserNickname(myplaceEntity.getUser().getNickname());
 
         return myplaceDTO;
 

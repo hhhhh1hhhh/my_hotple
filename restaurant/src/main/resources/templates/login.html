@@ -10,30 +10,7 @@
   <title>My Hotple Login Page</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-  <div class="container-fluid" bis_skin_checked="1">
-    <a class="navbar-brand" href="/">My Hotple</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor01" bis_skin_checked="1">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Map</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/shared">Shared Place</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/myplace/list">My Place</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<nav th:replace="fragments.html :: main-nav"></nav>
 <form th:action="@{/loginProc}" method="post" name="loginForm">
   <div class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto; text-align: center;">
     <h2 style="margin-top: 50px; margin-bottom: 50px">로그인</h2>

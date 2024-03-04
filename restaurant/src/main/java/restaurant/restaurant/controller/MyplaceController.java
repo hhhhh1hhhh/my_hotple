@@ -58,4 +58,10 @@ public class MyplaceController {
         return "redirect:/myplace/list";
     }
 
+    @GetMapping("/edit")
+    public String myplaceEdit(Model model) {
+        authService.setUserData(model);
+        return "myplace/edit";
+    }
+
 }

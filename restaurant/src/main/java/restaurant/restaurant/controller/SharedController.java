@@ -30,6 +30,13 @@ public class SharedController {
         return "shared";
     }
 
+    @GetMapping("/test")
+    public String ShareDetailP() {
+
+
+        return "test";
+    }
+
 
 
 }

@@ -15,7 +15,6 @@ import java.util.List;
 public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
-    private final AuthService authService;
 
     public void save(MyplaceDTO myplaceDTO) {
         MyplaceEntity myplaceEntity = MyplaceEntity.toSaveEntity(myplaceDTO);
@@ -23,18 +22,7 @@ public class MyplaceService {
     }
 
 
-    public List<MyplaceDTO> findAll() {
-        List<MyplaceEntity> myplaceEntityList = myplaceRepository.findAll();
-        List<MyplaceDTO> myplaceDTOList = new ArrayList<>();
-
-        for (MyplaceEntity myplaceEntity: myplaceEntityList) {
-            myplaceDTOList.add(MyplaceDTO.toMyplaceDTO(myplaceEntity));
-        }
-
-        return myplaceDTOList;
-    }
-
-    public List<MyplaceDTO> findById(Model model) {
+    public List<MyplaceDTO> findByUserId(Model model) {
         Integer userId = (Integer) model.getAttribute("id");
         List<MyplaceEntity> myplaceEntityList = myplaceRepository.findByUser_Id(userId);
         List<MyplaceDTO> myplaceDTOList = new ArrayList<>();

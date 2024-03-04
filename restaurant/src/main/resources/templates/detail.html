@@ -10,33 +10,34 @@
 <nav th:replace="fragments.html :: main-nav"></nav>
 
 <div class="card mb-3" bis_skin_checked="1" style="width: 60%; margin: 50px auto;">
-  <h3 class="card-header">광화문</h3>
+  <h3 class="card-header" th:text="${myplace.placeName}"></h3>
   <div class="card-body" bis_skin_checked="1">
-    <h5 class="card-title">서울 종로구 효자로 12 국립고궁박물관</h5>
-    <h6 class="card-subtitle text-muted" style="text-align: right">작성자랑 조회수 넣기</h6>
+    <h5 class="card-title" th:text="${myplace.address}"></h5>
+    <h6 class="card-subtitle text-muted" style="text-align: right"
+        th:utext="' 글쓴이: ' + ${myplace.userNickname + '<br> 조회수: ' + myplace.views}"></h6>
   </div>
   <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
     <rect width="100%" height="100%" fill="#868e96"></rect>
     <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
   </svg>
   <div class="card-body" bis_skin_checked="1">
-    <p class="card-text">카테고리</p>
+    <p class="card-text" th:text="${myplace.category}"></p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">contents 내용 넣기</li>
+    <li class="list-group-item" th:text="${myplace.contents}"></li>
   </ul>
   <div class="card-body" bis_skin_checked="1">
     <a href="#" class="card-link">좋아요 누르기</a>
     <div style="text-align: right">
-      <a href="#" class="card-link">수정</a>
-      <a href="#" class="card-link">삭제</a>
+      <a href="/shared" class="card-link">목록</a>
+      <a href="/shared/update" class="card-link">수정</a>
+      <a href="/shared/delete" class="card-link">삭제</a>
     </div>
   </div>
-  <div class="card-footer text-muted" bis_skin_checked="1">
-    여기에는 작성날짜를 적자
+  <div class="card-footer text-muted" bis_skin_checked="1"
+       th:text="*{#temporals.format(myplace.createdTime, 'yyyy-MM-dd HH:mm:ss')}">
   </div>
 </div>
-
 <div class="card" bis_skin_checked="1"  style="width: 60%; margin: 50px auto;">
   <div class="card-body" bis_skin_checked="1">
     <h6 class="card-subtitle mb-2 text-muted">댓글 작성자</h6>

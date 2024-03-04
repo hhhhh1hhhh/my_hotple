@@ -27,7 +27,7 @@ public class MyplaceController {
     @GetMapping("/list")
     public String myplaceP(Model model) {
         authService.setUserData(model);
-        List<MyplaceDTO> myplaceDTOList = myplaceService.findById(model); // 모델 전달
+        List<MyplaceDTO> myplaceDTOList = myplaceService.findByUserId(model); // 모델 전달
         model.addAttribute("myplaceList", myplaceDTOList);
 
         return "myplace/list";

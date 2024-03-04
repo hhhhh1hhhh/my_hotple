@@ -25,7 +25,6 @@ public class MyplaceDTO {
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
 
-    // user_id 필드를 getUserId() 메서드로 변경
     private int userId;
 
     private UserEntity user;

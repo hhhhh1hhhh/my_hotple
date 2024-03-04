@@ -26,8 +26,8 @@ public class AuthService {
         model.addAttribute("nickname", nickname);
         model.addAttribute("id", id);
 
-
     }
+
 
     private String getUserName() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
@@ -50,6 +50,7 @@ public class AuthService {
         String userIdAsString = getUserEntityPropertyAsString(userEntity -> String.valueOf(userEntity.getId()));
         return (userIdAsString != null) ? Integer.parseInt(userIdAsString) : 0;
     }
+
 
     private String getUserEntityPropertyAsString(Function<UserEntity, String> propertyExtractor) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

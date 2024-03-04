@@ -24,15 +24,15 @@ public class MyplaceController {
     private final MyplaceService myplaceService;
 
 
-
     @GetMapping("/list")
     public String myplaceP(Model model) {
         authService.setUserData(model);
-        List<MyplaceDTO> myplaceDTOList = myplaceService.findAll();
+        List<MyplaceDTO> myplaceDTOList = myplaceService.findById(model); // 모델 전달
         model.addAttribute("myplaceList", myplaceDTOList);
 
         return "myplace/list";
     }
+
 
     @GetMapping("/write")
     public String myplacWrite(Model model) {

@@ -35,11 +35,6 @@ public class MyplaceService {
         return myplaceDTOList;
     }
 
-//    public BoardDTO update(BoardDTO boardDTO) {
-//        BoardEntity boardEntity = BoardEntity.toUpdateEntity(boardDTO);
-//        boardRepository.save(boardEntity);
-//        return findById(boardDTO.getId());
-//    }
 
     public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
         MyplaceEntity myplaceEntity = MyplaceEntity.toEditEntity(myplaceDTO);
@@ -50,5 +45,9 @@ public class MyplaceService {
 
         myplaceRepository.save(myplaceEntity);
         return sharedService.findByPlaceId(myplaceDTO.getId());
+    }
+
+    public void delete(int id) {
+        myplaceRepository.deleteById(id);
     }
 }

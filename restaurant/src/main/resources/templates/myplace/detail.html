@@ -29,7 +29,7 @@
     <div style="text-align: right">
       <a th:href="@{/myplace/list}" class="card-link">목록</a>
       <a th:href="@{|/myplace/edit/${myplace.id}|}" class="card-link">수정</a>
-      <a th:href="@{/myplace/delete}" class="card-link">삭제</a>
+      <a th:href="@{|/myplace/delete/${myplace.id}|}" class="card-link" onclick="confirmDelete()">삭제</a>
     </div>
   </div>
   <div class="card-footer text-muted" bis_skin_checked="1"
@@ -38,4 +38,14 @@
 </div>
 <div th:replace="fragments.html :: comment"></div>
 </body>
+<script>
+  function confirmDelete() {
+    var result = confirm("삭제하시겠습니까?");
+    if (result) {
+      alert("삭제되었습니다.");
+    } else {
+      event.preventDefault();
+    }
+  }
+</script>
 </html>

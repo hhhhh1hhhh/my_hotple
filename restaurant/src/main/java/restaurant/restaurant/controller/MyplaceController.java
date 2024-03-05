@@ -57,7 +57,7 @@ public class MyplaceController {
     }
 
     @GetMapping("/edit/{id}")
-    public String myplaceEdit(@PathVariable int id, Model model) {
+    public String myplaceEditForm(@PathVariable int id, Model model) {
         authService.setUserData(model);
 
         MyplaceDTO myplaceDTO = sharedService.findByPlaceId(id);
@@ -69,12 +69,19 @@ public class MyplaceController {
 
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute MyplaceDTO myplaceDTO, Model model) {
+    public String myplaceEdit(@ModelAttribute MyplaceDTO myplaceDTO, Model model) {
 
         MyplaceDTO myplace = myplaceService.edit(myplaceDTO);
         model.addAttribute("myplace", myplace);
 
         return "redirect:/myplace/" + myplaceDTO.getId();
+    }
+
+    @GetMapping("/delete/{id}")
+    public String myplaceDel(@PathVariable int id) {
+        myplaceService.delete(id);
+
+        return "redirect:/myplace/list";
     }
 
 }

@@ -15,6 +15,7 @@ import java.util.List;
 public class MyplaceService {
 
     private final MyplaceRepository myplaceRepository;
+    private final SharedService sharedService;
 
     public void save(MyplaceDTO myplaceDTO) {
         MyplaceEntity myplaceEntity = MyplaceEntity.toSaveEntity(myplaceDTO);
@@ -34,4 +35,20 @@ public class MyplaceService {
         return myplaceDTOList;
     }
 
+//    public BoardDTO update(BoardDTO boardDTO) {
+//        BoardEntity boardEntity = BoardEntity.toUpdateEntity(boardDTO);
+//        boardRepository.save(boardEntity);
+//        return findById(boardDTO.getId());
+//    }
+
+    public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
+        MyplaceEntity myplaceEntity = MyplaceEntity.toEditEntity(myplaceDTO);
+
+        System.out.println("3. place Id = " + myplaceEntity.getId());
+        System.out.println("3. placeName = " + myplaceEntity.getPlaceName());
+        System.out.println("3. 주소 = " + myplaceEntity.getAddress());
+
+        myplaceRepository.save(myplaceEntity);
+        return sharedService.findByPlaceId(myplaceDTO.getId());
+    }
 }

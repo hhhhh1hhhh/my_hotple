@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/myplace")
 public class MyplaceController {
 
-
     private final AuthService authService;
     private final MyplaceService myplaceService;
     private final SharedService sharedService;
@@ -25,6 +24,7 @@ public class MyplaceController {
     @GetMapping("/list")
     public String myplaceP(Model model) {
         authService.setUserData(model);
+
         List<MyplaceDTO> myplaceDTOList = myplaceService.findByUserId(model); // 모델 전달
         model.addAttribute("myplaceList", myplaceDTOList);
 
@@ -45,23 +45,36 @@ public class MyplaceController {
     @GetMapping("/write")
     public String myplaceWrite(Model model) {
         authService.setUserData(model);
+
         return "myplace/write";
     }
 
     @PostMapping("/save")
-    public String myplaceSave(@ModelAttribute MyplaceDTO myplaceDTO, Model model) {
-        authService.setUserData(model);
-        System.out.println("myplaceDTO = " + myplaceDTO);
-
+    public String myplaceSave(@ModelAttribute MyplaceDTO myplaceDTO) {
         myplaceService.save(myplaceDTO);
 
         return "redirect:/myplace/list";
     }
 
-    @GetMapping("/edit")
-    public String myplaceEdit(Model model) {
+    @GetMapping("/edit/{id}")
+    public String myplaceEdit(@PathVariable int id, Model model) {
         authService.setUserData(model);
+
+        MyplaceDTO myplaceDTO = sharedService.findByPlaceId(id);
+        model.addAttribute("myplaceEdit", myplaceDTO);
+        System.out.println("1. id = " + myplaceDTO.getId()); // 여기까지는 잘 넘어옴
+
         return "myplace/edit";
+    }
+
+
+    @PostMapping("/edit")
+    public String edit(@ModelAttribute MyplaceDTO myplaceDTO, Model model) {
+
+        MyplaceDTO myplace = myplaceService.edit(myplaceDTO);
+        model.addAttribute("myplace", myplace);
+
+        return "redirect:/myplace/" + myplaceDTO.getId();
     }
 
 }

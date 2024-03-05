@@ -27,9 +27,9 @@
   <div class="card-body" bis_skin_checked="1">
     <a href="#" class="card-link">좋아요 누르기</a>
     <div style="text-align: right">
-      <a href="/myplace/list" class="card-link">목록</a>
-      <a href="/myplace/edit" class="card-link">수정</a>
-      <a href="/myplace/delete" class="card-link">삭제</a>
+      <a th:href="@{/myplace/list}" class="card-link">목록</a>
+      <a th:href="@{|/myplace/edit/${myplace.id}|}" class="card-link">수정</a>
+      <a th:href="@{/myplace/delete}" class="card-link">삭제</a>
     </div>
   </div>
   <div class="card-footer text-muted" bis_skin_checked="1"

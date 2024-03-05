@@ -39,6 +39,8 @@ public class MyplaceEntity extends BaseEntity{
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private UserEntity user;
 
+
+
     public void setUserId(int userId) {
         this.user = new UserEntity();
         this.user.setId(userId);
@@ -49,12 +51,10 @@ public class MyplaceEntity extends BaseEntity{
     }
 
 
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
 
     public static MyplaceEntity toSaveEntity(MyplaceDTO myplaceDTO) {
         MyplaceEntity myplaceEntity = new MyplaceEntity();
+
         myplaceEntity.setPlaceName(myplaceDTO.getPlaceName());
         myplaceEntity.setAddress(myplaceDTO.getAddress());
         myplaceEntity.setCategory(myplaceDTO.getCategory());
@@ -67,4 +67,26 @@ public class MyplaceEntity extends BaseEntity{
         return myplaceEntity;
 
     }
+
+
+    public static MyplaceEntity toEditEntity(MyplaceDTO myplaceDTO) {
+
+        MyplaceEntity myplaceEntity = new MyplaceEntity();
+
+        myplaceEntity.setId(myplaceDTO.getId());
+        myplaceEntity.setPlaceName(myplaceDTO.getPlaceName());
+        myplaceEntity.setAddress(myplaceDTO.getAddress());
+        myplaceEntity.setCategory(myplaceDTO.getCategory());
+        myplaceEntity.setContents(myplaceDTO.getContents());
+        myplaceEntity.setViews(myplaceDTO.getViews());
+        myplaceEntity.setLikes(myplaceDTO.getLikes());
+        myplaceEntity.setShare(myplaceDTO.isShare());
+        myplaceEntity.setUserId(myplaceDTO.getUserId());
+
+        return myplaceEntity;
+
+    }
+
+
+
 }

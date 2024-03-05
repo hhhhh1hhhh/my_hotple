@@ -36,6 +36,7 @@ public class MyplaceDTO {
         this.userId = userId;
     }
 
+
     public static MyplaceDTO toMyplaceDTO(MyplaceEntity myplaceEntity) {
         MyplaceDTO myplaceDTO = new MyplaceDTO();
 

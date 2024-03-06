@@ -1,6 +1,10 @@
 package restaurant.restaurant.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import restaurant.restaurant.dto.MyplaceDTO;
@@ -36,12 +40,9 @@ public class MyplaceService {
     }
 
 
+
     public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
         MyplaceEntity myplaceEntity = MyplaceEntity.toEditEntity(myplaceDTO);
-
-        System.out.println("3. place Id = " + myplaceEntity.getId());
-        System.out.println("3. placeName = " + myplaceEntity.getPlaceName());
-        System.out.println("3. 주소 = " + myplaceEntity.getAddress());
 
         myplaceRepository.save(myplaceEntity);
         return sharedService.findByPlaceId(myplaceDTO.getId());

@@ -1,6 +1,7 @@
 package restaurant.restaurant.dto;
 
 import lombok.*;
+import org.apache.catalina.User;
 import restaurant.restaurant.entity.MyplaceEntity;
 import restaurant.restaurant.entity.UserEntity;
 
@@ -25,17 +26,23 @@ public class MyplaceDTO {
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
 
-    private int userId;
 
     private UserEntity user;
-
+    private int userId;
     private String userNickname;
 
-    // 수정된 생성자 추가
-    public MyplaceDTO(int userId) {
+    public MyplaceDTO(int id, String placeName, String category, boolean share, int views, int likes,
+                      LocalDateTime createdTime, int userId, String userNickname) {
+        this.id = id;
+        this.placeName = placeName;
+        this.category = category;
+        this.share = share;
+        this.views = views;
+        this.likes = likes;
+        this.createdTime = createdTime;
         this.userId = userId;
+        this.userNickname = userNickname;
     }
-
 
     public static MyplaceDTO toMyplaceDTO(MyplaceEntity myplaceEntity) {
         MyplaceDTO myplaceDTO = new MyplaceDTO();

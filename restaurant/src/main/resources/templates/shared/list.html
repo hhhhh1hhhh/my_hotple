@@ -7,9 +7,7 @@
 <body>
 <nav th:replace="fragments.html :: main-nav"></nav>
 <h2 style="margin-top: 50px; margin-bottom: 50px; text-align: center">Shared Place List</h2>
-<div class="d-flex justify-content-end mb-3">
-</div>
-<table class="table table-hover" style="text-align: center">
+<table class="table table-hover" style="text-align: center; width: 75%;  margin: 40px auto;">
     <thead>
     <tr class="table-primary">
         <th scope="col">번호</th>
@@ -22,11 +20,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="table-active" th:each="myplace: ${myplaceList}" th:if="${myplace.share eq true}">
-<!--        <th scope="row">Active</th>-->
+    <tr class="table-active" th:each="myplace: ${myplaceDTOPage}">
         <td th:text="${myplace.id}"></td>
         <td th:text="${myplace.category}"></td>
-        <td><a th:href="@{|/shared/${myplace.id}|}" th:text="${myplace.placeName} "></a></td>
+        <td><a th:href="@{|/shared/${myplace.id}|(page=${myplaceDTOPage.number + 1})}" th:text="${myplace.placeName} "></a></td>
         <td th:text="${myplace.userNickname}"></td>
         <td th:text="*{#temporals.format(myplace.createdTime, 'yyyy-MM-dd HH:mm')}"></td>
         <td th:text="${myplace.views}"></td>
@@ -34,5 +31,32 @@
     </tr>
     </tbody>
 </table>
+<div style="text-align: center">
+    <!-- 첫번째 페이지로 이동 -->
+    <!-- /shared/list?page=1 -->
+    <a th:href="@{/shared/list(page=1)}">First</a>
+    <!-- 이전 링크 활성화 비활성화 -->
+    <!-- boardList.getNumber() 사용자:2페이지 getNumber()=1 -->
+    <a th:href="${myplaceDTOPage.first} ? '#' : @{/shared/list(page=${myplaceDTOPage.number})}">prev</a>
+
+    <!-- 페이지 번호 링크(현재 페이지는 숫자만)
+            for(int page=startPage; page<=endPage; page++)-->
+    <span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+<!-- 현재페이지는 링크 없이 숫자만 -->
+    <span th:if="${page == myplaceDTOPage.number + 1}" th:text="${page}"></span>
+        <!-- 현재페이지 번호가 아닌 다른 페이지번호에는 링크를 보여줌 -->
+    <span th:unless="${page == myplaceDTOPage.number + 1}">
+        <a th:href="@{/shared/list(page=${page})}" th:text="${page}"></a>
+    </span>
+</span>
+
+    <!-- 다음 링크 활성화 비활성화
+        사용자: 2페이지, getNumber: 1, 3페이지-->
+    <a th:href="${myplaceDTOPage.last} ? '#' : @{/shared/list(page=${myplaceDTOPage.number + 2})}">next</a>
+    <!-- 마지막 페이지로 이동 -->
+    <a th:href="@{/shared/list(page=${myplaceDTOPage.totalPages})}">Last</a>
+</div>
+
+
 </body>
 </html>

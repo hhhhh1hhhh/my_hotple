@@ -24,4 +24,5 @@ public interface MyplaceRepository extends JpaRepository<MyplaceEntity, Integer>
 
     Page<MyplaceEntity> findAllByShareIsTrue(PageRequest id);
 
+    Page<MyplaceEntity> findAllByUser_Id(Integer userId, PageRequest id);
 }

@@ -39,6 +39,26 @@ public class MyplaceService {
         return myplaceDTOList;
     }
 
+    public Page<MyplaceDTO> paging(Pageable pageable, Model model) {
+        int page = pageable.getPageNumber() - 1;
+        int pageLimit = 6; // 한 페이지에 보여줄 글 갯수
+
+        Integer userId = (Integer) model.getAttribute("id");
+
+//        Page<MyplaceEntity> myplaceEntities = myplaceRepository
+//                .findAllByShareIsTrue(PageRequest.of(page, pageLimit, Sort.by(Sort.Direction.DESC, "id")));
+
+        Page<MyplaceEntity> myplaceEntities = myplaceRepository
+                .findAllByUser_Id(userId, PageRequest.of(page, pageLimit, Sort.by(Sort.Direction.DESC, "id")));
+
+        Page<MyplaceDTO> myplaceDTOS = myplaceEntities.map(myplace
+                -> new MyplaceDTO(myplace.getId(), myplace.getPlaceName(), myplace.getAddress(),
+                myplace.getCategory(), myplace.getContents(), myplace.isShare(), myplace.getViews(), myplace.getLikes(),
+                myplace.getCreatedTime(), myplace.getUserId(), myplace.getUser().getNickname()));
+
+        return myplaceDTOS;
+    }
+
 
 
     public MyplaceDTO edit(MyplaceDTO myplaceDTO) {

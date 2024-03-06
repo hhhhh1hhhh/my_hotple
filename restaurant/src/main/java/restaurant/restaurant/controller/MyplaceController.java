@@ -24,14 +24,32 @@ public class MyplaceController {
     private final SharedService sharedService;
 
 
+//    @GetMapping("/list")
+//    public String myplaceP(Model model) {
+//        authService.setUserData(model);
+//
+//        List<MyplaceDTO> myplaceDTOList = myplaceService.findByUserId(model); // 모델 전달
+//        model.addAttribute("myplaceList", myplaceDTOList);
+//
+//        return "myplace/list";
+//    }
+
     @GetMapping("/list")
-    public String myplaceP(Model model) {
+    public String paging(@PageableDefault(page = 1) Pageable pageable, Model model) {
         authService.setUserData(model);
 
-        List<MyplaceDTO> myplaceDTOList = myplaceService.findByUserId(model); // 모델 전달
-        model.addAttribute("myplaceList", myplaceDTOList);
+        pageable.getPageNumber();
+        Page<MyplaceDTO> myplaceDTOPage = myplaceService.paging(pageable, model);
 
-        return "myplace/list";
+        int blockLimit = 5;
+        int startPage = (((int)(Math.ceil((double)pageable.getPageNumber() / blockLimit))) - 1) * blockLimit + 1;
+        int endPage = ((startPage + blockLimit - 1) < myplaceDTOPage.getTotalPages()) ? startPage + blockLimit - 1 : myplaceDTOPage.getTotalPages();
+
+        model.addAttribute("myplaceDTOPage", myplaceDTOPage);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+
+        return "/myplace/list";
     }
 
 

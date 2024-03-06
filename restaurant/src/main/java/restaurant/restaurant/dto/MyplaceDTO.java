@@ -31,11 +31,14 @@ public class MyplaceDTO {
     private int userId;
     private String userNickname;
 
-    public MyplaceDTO(int id, String placeName, String category, boolean share, int views, int likes,
-                      LocalDateTime createdTime, int userId, String userNickname) {
+    public MyplaceDTO(int id, String placeName, String address, String category, String contents,
+                      boolean share, int views, int likes, LocalDateTime createdTime,
+                      int userId, String userNickname) {
         this.id = id;
         this.placeName = placeName;
+        this.address = address;
         this.category = category;
+        this.contents = contents;
         this.share = share;
         this.views = views;
         this.likes = likes;

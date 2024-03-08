@@ -2,6 +2,7 @@ package restaurant.restaurant.dto;
 
 import lombok.*;
 import org.apache.catalina.User;
+import org.springframework.web.multipart.MultipartFile;
 import restaurant.restaurant.entity.MyplaceEntity;
 import restaurant.restaurant.entity.UserEntity;
 
@@ -19,17 +20,21 @@ public class MyplaceDTO {
     private String address;
     private String category;
     private String contents;
-    private byte[] photo;
     private boolean share;
     private int likes;
     private int views;
+
     private LocalDateTime createdTime;
     private LocalDateTime updatedTime;
-
 
     private UserEntity user;
     private int userId;
     private String userNickname;
+
+    private MultipartFile file; // write.html -> Controller 파일 담는 용도
+    private String originalFileName; // 원본 파일 이름
+    private String storedFileName; // 서버 저장용 파일 이름
+    private int fileAttached; // 파일 첨부 여부(첨부 1, 미첨부 0)
 
     public MyplaceDTO(int id, String placeName, String address, String category, String contents,
                       boolean share, int views, int likes, LocalDateTime createdTime,
@@ -62,6 +67,7 @@ public class MyplaceDTO {
         myplaceDTO.setShare(myplaceEntity.isShare());
         myplaceDTO.setUserId(myplaceEntity.getUserId());
         myplaceDTO.setUserNickname(myplaceEntity.getUser().getNickname());
+
 
         return myplaceDTO;
 

@@ -24,17 +24,7 @@ public class SharedController {
     private final AuthService authService;
     private final SharedService sharedService;
 
-
-//    @GetMapping("/list")
-//    public String ShareP(Model model) {
-//        authService.setUserData(model);
-//        List<MyplaceDTO> myplaceDTOList = sharedService.findAll();
-//        model.addAttribute("myplaceList", myplaceDTOList);
-//
-//        return "shared/list";
-//    }
-
-    // /myplace/list?page=1
+    // /shared/30?page=1
     @GetMapping("/list")
     public String paging(@PageableDefault(page = 1) Pageable pageable, Model model) {
         authService.setUserData(model);
@@ -54,12 +44,14 @@ public class SharedController {
     }
 
     @GetMapping("/{id}")
-    public String findById(@PathVariable int id, Model model) {
+    public String findById(@PathVariable int id, Model model,
+                           @PageableDefault(page=1) Pageable pageable) {
         authService.setUserData(model);
         sharedService.updateViews(id);
+
         MyplaceDTO myplaceDTO = sharedService.findByPlaceId(id);
         model.addAttribute("myplace", myplaceDTO);
-
+        model.addAttribute("page", pageable.getPageNumber());
 
         return "shared/detail";
     }

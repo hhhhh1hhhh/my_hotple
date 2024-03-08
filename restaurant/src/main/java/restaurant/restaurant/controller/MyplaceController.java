@@ -12,6 +12,7 @@ import restaurant.restaurant.service.AuthService;
 import restaurant.restaurant.service.MyplaceService;
 import restaurant.restaurant.service.SharedService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -23,16 +24,6 @@ public class MyplaceController {
     private final MyplaceService myplaceService;
     private final SharedService sharedService;
 
-
-//    @GetMapping("/list")
-//    public String myplaceP(Model model) {
-//        authService.setUserData(model);
-//
-//        List<MyplaceDTO> myplaceDTOList = myplaceService.findByUserId(model); // 모델 전달
-//        model.addAttribute("myplaceList", myplaceDTOList);
-//
-//        return "myplace/list";
-//    }
 
     @GetMapping("/list")
     public String paging(@PageableDefault(page = 1) Pageable pageable, Model model) {
@@ -54,11 +45,13 @@ public class MyplaceController {
 
 
     @GetMapping("/{id}")
-    public String findById(@PathVariable int id, Model model) {
+    public String findById(@PathVariable int id, Model model,
+                           @PageableDefault(page=1) Pageable pageable) {
         authService.setUserData(model);
 
         MyplaceDTO myplaceDTO = sharedService.findByPlaceId(id);
         model.addAttribute("myplace", myplaceDTO);
+        model.addAttribute("page", pageable.getPageNumber());
 
         return "myplace/detail";
     }
@@ -71,7 +64,7 @@ public class MyplaceController {
     }
 
     @PostMapping("/save")
-    public String myplaceSave(@ModelAttribute MyplaceDTO myplaceDTO) {
+    public String myplaceSave(@ModelAttribute MyplaceDTO myplaceDTO) throws IOException {
         myplaceService.save(myplaceDTO);
 
         return "redirect:/myplace/list";

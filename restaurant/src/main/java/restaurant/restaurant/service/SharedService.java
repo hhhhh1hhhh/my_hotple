@@ -22,6 +22,7 @@ public class SharedService {
     private final MyplaceRepository myplaceRepository;
 
 
+    @Transactional
     public List<MyplaceDTO> findAll() {
         List<MyplaceEntity> myplaceEntityList = myplaceRepository.findAll();
         List<MyplaceDTO> myplaceDTOList = new ArrayList<>();
@@ -39,6 +40,8 @@ public class SharedService {
         myplaceRepository.updateViews(id);
     }
 
+
+    @Transactional
     public MyplaceDTO findByPlaceId(int id) {
         Optional<MyplaceEntity> optionalMyplaceEntity = myplaceRepository.findById(id);
         if (optionalMyplaceEntity.isPresent()) {
@@ -61,7 +64,6 @@ public class SharedService {
                 -> new MyplaceDTO(myplace.getId(), myplace.getPlaceName(), myplace.getAddress(),
                 myplace.getCategory(), myplace.getContents(), myplace.isShare(), myplace.getViews(), myplace.getLikes(),
                 myplace.getCreatedTime(), myplace.getUserId(), myplace.getUser().getNickname()));
-
 
 //        System.out.println("myplaceEntities.getContent() = " + myplaceEntities.getContent()); // 요청 페이지에 해당하는 글
 //        System.out.println("myplaceEntities.getTotalElements() = " + myplaceEntities.getTotalElements()); // 전체 글갯수

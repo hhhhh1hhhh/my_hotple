@@ -67,7 +67,21 @@ public class MyplaceDTO {
         myplaceDTO.setShare(myplaceEntity.isShare());
         myplaceDTO.setUserId(myplaceEntity.getUserId());
         myplaceDTO.setUserNickname(myplaceEntity.getUser().getNickname());
+        if (myplaceEntity.getFileAttached() == 0) {
+            myplaceDTO.setFileAttached(myplaceEntity.getFileAttached()); // 0
+        } else {
+            myplaceDTO.setFileAttached(myplaceEntity.getFileAttached()); // 1
+            // 파일 이름을 가져가야 함.
+            // originalFileName, storedFileName : myplace_file_table(MyplaceFileEntity)
+            /* [JOIN]
+            select *
+            from myplace_table m, myplace_file_table mf
+            where m.id=mf.myplace_id and where m.id=>;
+             */
+            myplaceDTO.setOriginalFileName(myplaceEntity.getMyplaceFileEntities().get(0).getOriginalFileName());
+            myplaceDTO.setStoredFileName(myplaceEntity.getMyplaceFileEntities().get(0).getStoredFileName());
 
+        }
 
         return myplaceDTO;
 

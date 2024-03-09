@@ -36,7 +36,16 @@
        th:text="*{#temporals.format(myplace.createdTime, 'yyyy-MM-dd HH:mm:ss')}">
   </div>
 </div>
-<div th:replace="fragments.html :: comment"></div>
-
+<div class="card" bis_skin_checked="1"  style="width: 60%; margin: 50px auto;">
+  <div class="card-body" bis_skin_checked="1">
+    <h6 class="card-subtitle mb-2 text-muted" id="commentWriter" th:text="${nickname}">댓글 작성자</h6>
+    <div bis_skin_checked="1">
+                <textarea type="text" class="form-control" placeholder="내용" id="commentContent"
+                          style="margin-top: 10px; margin-bottom: 10px;" rows="3"></textarea>
+    </div>
+    <button type="button" class="btn btn-success" style="float: right;" onclick="commentWrite()">댓글작성</button>
+  </div>
+</div>
+<div th:replace="fragments.html :: comment-list"></div>
 </body>
 </html>

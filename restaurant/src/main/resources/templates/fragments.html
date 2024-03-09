@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link th:href="@{/css/bootstrap.min.css}"
           href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <nav th:fragment="main-nav" class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -94,7 +95,21 @@
     </form>
 </footer>
 
-<footer th:fragment="comment">
+<!--<footer th:fragment="comment-write">-->
+<!--    <div class="card" bis_skin_checked="1"  style="width: 60%; margin: 50px auto;">-->
+<!--        <div class="card-body" bis_skin_checked="1">-->
+<!--            <h6 class="card-subtitle mb-2 text-muted" id="commentWriter" th:text="${nickname}">댓글 작성자</h6>-->
+<!--            <div bis_skin_checked="1">-->
+<!--                <textarea type="text" class="form-control" placeholder="내용" id="commentContent"-->
+<!--                          style="margin-top: 10px; margin-bottom: 10px;" rows="3"></textarea>-->
+<!--            </div>-->
+<!--            <button type="button" class="btn btn-success" style="float: right;" onclick="commentWrite()">댓글작성</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
+
+
+<footer th:fragment="comment-list">
     <div class="card" bis_skin_checked="1"  style="width: 60%; margin: 50px auto;">
         <div class="card-body" bis_skin_checked="1">
             <h6 class="card-subtitle mb-2 text-muted">댓글 작성자</h6>
@@ -104,6 +119,7 @@
         </div>
     </div>
 </footer>
+
 
 
 </body>

@@ -38,7 +38,7 @@ public AuthenticationSuccessHandler authenticationSuccessHandler() {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/", "/login", "/join", "/joinProc", "/map", "check_duplicate",
-                                "/myplace/**", "/shared/**",
+                                "/myplace/**", "/shared/**", "/comment/**",
                                 "/js/**", "/css/**").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/my/**").hasAnyRole("ADMIN", "USER")

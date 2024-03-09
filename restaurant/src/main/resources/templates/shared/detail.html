@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title th:text="${myplace.placeName}"></title>
+  <script type="text/javascript" th:src="@{/js/comment.js}"></script>
   <div th:replace="fragments.html :: main-head"></div>
 </head>
 <body>
@@ -36,9 +37,10 @@
        th:text="*{#temporals.format(myplace.createdTime, 'yyyy-MM-dd HH:mm:ss')}">
   </div>
 </div>
+
 <div class="card" bis_skin_checked="1"  style="width: 60%; margin: 50px auto;">
   <div class="card-body" bis_skin_checked="1">
-    <h6 class="card-subtitle mb-2 text-muted" id="commentWriter" th:text="${nickname}">댓글 작성자</h6>
+    <h6 class="card-subtitle mb-2 text-muted" id="commentWriter" th:text="${nickname}"></h6>
     <div bis_skin_checked="1">
                 <textarea type="text" class="form-control" placeholder="내용" id="commentContent"
                           style="margin-top: 10px; margin-bottom: 10px;" rows="3"></textarea>
@@ -46,6 +48,39 @@
     <button type="button" class="btn btn-success" style="float: right;" onclick="commentWrite()">댓글작성</button>
   </div>
 </div>
+
 <div th:replace="fragments.html :: comment-list"></div>
 </body>
+<script th:inline="javascript">
+  const commentWrite = () => {
+
+    const writer = [[${nickname}]];
+    const contents = document.getElementById("commentContent").value;
+    const id = [[${myplace.id}]]; // 게시글 번호
+
+    console.log("작성자: ", writer);
+    console.log("내용: ", contents);
+    console.log("게시글 번호: ", id);
+
+    $.ajax({
+      // 요청 방식: post, 요청 주소: /comment/save, 요청 데이터: 작성자, 작성내용, 게시글 번호
+      type: "post",
+      url: "/comment/save",
+      headers: {
+        "X-CSRF-TOKEN": $('[name="_csrf"]').val()
+      },
+      data: {
+        "commentWriter": writer,
+        "commentContents": contents,
+        "myplaceId": id
+      },
+      success: function (res) {
+        console.log("요청 성공", res)
+      },
+      error: function(err) {
+        console.log("요청 실패", err)
+      }
+    })
+  }
+</script>
 </html>

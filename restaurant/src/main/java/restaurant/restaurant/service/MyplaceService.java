@@ -1,5 +1,6 @@
 package restaurant.restaurant.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,9 @@ import restaurant.restaurant.repository.MyplaceRepository;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,17 +38,18 @@ public class MyplaceService {
             MyplaceEntity myplaceEntity = MyplaceEntity.toSaveEntity(myplaceDTO);
             myplaceRepository.save(myplaceEntity);
         } else {
-            MultipartFile file = myplaceDTO.getFile(); // 1. DTD에 담긴 파일을 꺼냄
-            String originalFilename = file.getOriginalFilename(); // 2. 파일의 이름을 가져옴
-            String storedFileName =  System.currentTimeMillis() + "_" + originalFilename; // 3. 서버 저장용 이름을 만듦
-            String savePath = "c:/springboot_img/" + storedFileName; // 4. 저장 경로 설정
-            file.transferTo(new File(savePath));  // 5. 해당 경로에 파일 저장
             MyplaceEntity myplaceEntity = MyplaceEntity.toSaveFileEntity(myplaceDTO);
             int savedId = myplaceRepository.save(myplaceEntity).getId(); // 6. myplace_table에 해당 데이터 save 처리
             MyplaceEntity myplace = myplaceRepository.findById(savedId).get(); // 7. myplace_file_table에 해당 데이터 save 처리
 
-            MyplaceFileEntity myplaceFileEntity = MyplaceFileEntity.toMyplaceFileEntity(myplace, originalFilename, storedFileName);
-            myplaceFileRepository.save(myplaceFileEntity);
+            for (MultipartFile file:  myplaceDTO.getFile()) {
+                String originalFilename = file.getOriginalFilename(); // 2. 파일의 이름을 가져옴
+                String storedFileName = System.currentTimeMillis() + "_" + originalFilename; // 3. 서버 저장용 이름을 만듦
+                String savePath = "c:/springboot_img/" + storedFileName; // 4. 저장 경로 설정
+                file.transferTo(new File(savePath));  // 5. 해당 경로에 파일 저장
+                MyplaceFileEntity myplaceFileEntity = MyplaceFileEntity.toMyplaceFileEntity(myplace, originalFilename, storedFileName);
+                myplaceFileRepository.save(myplaceFileEntity);
+            }
 
         }
     }
@@ -80,13 +85,14 @@ public class MyplaceService {
         return myplaceDTOS;
     }
 
-
     public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
         MyplaceEntity myplaceEntity = MyplaceEntity.toEditEntity(myplaceDTO);
 
         myplaceRepository.save(myplaceEntity);
         return sharedService.findByPlaceId(myplaceDTO.getId());
     }
+
+
 
     public void delete(int id) {
         myplaceRepository.deleteById(id);

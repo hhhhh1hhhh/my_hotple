@@ -4,9 +4,12 @@ import lombok.*;
 import org.apache.catalina.User;
 import org.springframework.web.multipart.MultipartFile;
 import restaurant.restaurant.entity.MyplaceEntity;
+import restaurant.restaurant.entity.MyplaceFileEntity;
 import restaurant.restaurant.entity.UserEntity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,10 +34,11 @@ public class MyplaceDTO {
     private int userId;
     private String userNickname;
 
-    private MultipartFile file; // write.html -> Controller 파일 담는 용도
-    private String originalFileName; // 원본 파일 이름
-    private String storedFileName; // 서버 저장용 파일 이름
+    private List<MultipartFile> File; // write.html -> Controller 파일 담는 용도
+    private List<String> originalFileName; // 원본 파일 이름
+    private List<String> storedFileName; // 서버 저장용 파일 이름
     private int fileAttached; // 파일 첨부 여부(첨부 1, 미첨부 0)
+
 
     public MyplaceDTO(int id, String placeName, String address, String category, String contents,
                       boolean share, int views, int likes, LocalDateTime createdTime,
@@ -67,24 +71,24 @@ public class MyplaceDTO {
         myplaceDTO.setShare(myplaceEntity.isShare());
         myplaceDTO.setUserId(myplaceEntity.getUserId());
         myplaceDTO.setUserNickname(myplaceEntity.getUser().getNickname());
+
         if (myplaceEntity.getFileAttached() == 0) {
             myplaceDTO.setFileAttached(myplaceEntity.getFileAttached()); // 0
         } else {
+            List<String> originalFileNameList = new ArrayList<>();
+            List<String> storedFileNameList = new ArrayList<>();
             myplaceDTO.setFileAttached(myplaceEntity.getFileAttached()); // 1
-            // 파일 이름을 가져가야 함.
-            // originalFileName, storedFileName : myplace_file_table(MyplaceFileEntity)
-            /* [JOIN]
-            select *
-            from myplace_table m, myplace_file_table mf
-            where m.id=mf.myplace_id and where m.id=>;
-             */
-            myplaceDTO.setOriginalFileName(myplaceEntity.getMyplaceFileEntities().get(0).getOriginalFileName());
-            myplaceDTO.setStoredFileName(myplaceEntity.getMyplaceFileEntities().get(0).getStoredFileName());
 
+            for(MyplaceFileEntity myplaceFileEntity: myplaceEntity.getMyplaceFileEntities()) {
+                originalFileNameList.add(myplaceFileEntity.getOriginalFileName());
+                storedFileNameList.add(myplaceFileEntity.getStoredFileName());
+            }
+            myplaceDTO.setOriginalFileName(originalFileNameList);
+            myplaceDTO.setStoredFileName(storedFileNameList);
         }
 
         return myplaceDTO;
 
     }
-
 }
+

@@ -76,7 +76,6 @@ public class MyplaceController {
 
         MyplaceDTO myplaceDTO = sharedService.findByPlaceId(id);
         model.addAttribute("myplaceEdit", myplaceDTO);
-        System.out.println("1. id = " + myplaceDTO.getId()); // 여기까지는 잘 넘어옴
 
         return "myplace/edit";
     }

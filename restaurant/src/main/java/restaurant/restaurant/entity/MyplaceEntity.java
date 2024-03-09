@@ -30,8 +30,6 @@ public class MyplaceEntity extends BaseEntity{
     @Column(length = 500)
     private String contents; // 내용
 
-    private byte[] photo; // 사진
-
     private boolean share; // 공유 여부
 
     private int likes; // 좋아요

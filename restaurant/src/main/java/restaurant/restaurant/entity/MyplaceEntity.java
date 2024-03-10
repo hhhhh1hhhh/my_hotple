@@ -3,7 +3,6 @@ package restaurant.restaurant.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.catalina.User;
 import restaurant.restaurant.dto.MyplaceDTO;
 
 import java.util.ArrayList;
@@ -44,7 +43,10 @@ public class MyplaceEntity extends BaseEntity{
 
 
     @OneToMany(mappedBy = "myplaceEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<MyplaceFileEntity> myplaceFileEntities = new ArrayList<>();
+    private List<MyplaceFileEntity> myplaceEntityList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "myplaceEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<CommentEntity> commentEntityList = new ArrayList<>();
 
 
     public void setUserId(int userId) {

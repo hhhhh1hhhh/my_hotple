@@ -1,7 +1,6 @@
 package restaurant.restaurant.dto;
 
 import lombok.*;
-import org.apache.catalina.User;
 import org.springframework.web.multipart.MultipartFile;
 import restaurant.restaurant.entity.MyplaceEntity;
 import restaurant.restaurant.entity.MyplaceFileEntity;
@@ -79,7 +78,7 @@ public class MyplaceDTO {
             List<String> storedFileNameList = new ArrayList<>();
             myplaceDTO.setFileAttached(myplaceEntity.getFileAttached()); // 1
 
-            for(MyplaceFileEntity myplaceFileEntity: myplaceEntity.getMyplaceFileEntities()) {
+            for(MyplaceFileEntity myplaceFileEntity: myplaceEntity.getMyplaceEntityList()) {
                 originalFileNameList.add(myplaceFileEntity.getOriginalFileName());
                 storedFileNameList.add(myplaceFileEntity.getStoredFileName());
             }

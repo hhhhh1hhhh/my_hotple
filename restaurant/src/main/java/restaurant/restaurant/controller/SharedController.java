@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import restaurant.restaurant.dto.CommentDTO;
 import restaurant.restaurant.dto.MyplaceDTO;
 import restaurant.restaurant.service.AuthService;
+import restaurant.restaurant.service.CommentService;
 import restaurant.restaurant.service.MyplaceService;
 import restaurant.restaurant.service.SharedService;
 
@@ -23,6 +25,7 @@ public class SharedController {
 
     private final AuthService authService;
     private final SharedService sharedService;
+    private final CommentService commentService;
 
     // /shared/30?page=1
     @GetMapping("/list")
@@ -48,8 +51,12 @@ public class SharedController {
                            @PageableDefault(page=1) Pageable pageable) {
         authService.setUserData(model);
         sharedService.updateViews(id);
-
         MyplaceDTO myplaceDTO = sharedService.findByPlaceId(id);
+
+        /* 댓글 목록 가져오기*/
+        List<CommentDTO> commentDTOList = commentService.findAll(id);
+
+        model.addAttribute("commentList", commentDTOList);
         model.addAttribute("myplace", myplaceDTO);
         model.addAttribute("page", pageable.getPageNumber());
 

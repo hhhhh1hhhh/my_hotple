@@ -41,7 +41,6 @@ public class MyplaceEntity extends BaseEntity{
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private UserEntity user;
 
-
     @OneToMany(mappedBy = "myplaceEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<MyplaceFileEntity> myplaceEntityList = new ArrayList<>();
 

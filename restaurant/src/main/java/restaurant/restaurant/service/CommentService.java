@@ -50,6 +50,68 @@ public class CommentService {
             commentDTOList.add(commentDTO);
         }
         return commentDTOList;
-
     }
+
+
+    public CommentDTO findByCommentId(int id) {
+        Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);
+
+        if (optionalCommentEntity.isPresent()) {
+            CommentEntity commentEntity = optionalCommentEntity.get();
+            return CommentDTO.toCommentDTO(commentEntity, commentEntity.getMyplaceEntity().getId());
+        } else {
+            return null;
+        }
+    }
+
+
+    // 댓글 수정
+//    public CommentDTO editComment(int id, String commentContents) {
+//        Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);
+//
+//        if (optionalCommentEntity.isPresent()) {
+//            CommentEntity commentEntity = optionalCommentEntity.get();
+//            commentEntity.setCommentContents(commentContents);
+//
+//            return CommentDTO.toCommentDTO(commentRepository.save(commentEntity), commentEntity.getMyplaceEntity().getId());
+//        } else {
+//            return null;  // 수정 실패 시 null 반환
+//        }
+//    }
+
+    public CommentDTO editComment(int id, String commentContents) {
+        Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);
+
+        if (optionalCommentEntity.isPresent()) {
+            CommentEntity commentEntity = optionalCommentEntity.get();
+            commentEntity.setCommentContents(commentContents);
+
+            // 수정된 댓글을 저장하고, 저장된 엔티티를 DTO로 변환하여 반환
+            return CommentDTO.toCommentDTO(commentRepository.save(commentEntity), commentEntity.getMyplaceEntity().getId());
+        } else {
+            return null;  // 수정 실패 시 null 반환
+        }
+    }
+
+
+
+    public int getMyplaceIdByCommentId(int id) {
+        Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);
+
+        return optionalCommentEntity.map(commentEntity -> commentEntity.getMyplaceEntity().getId()).orElse(-1);
+    }
+
+    public int deleteAndGetMyplaceId(int id) {
+        Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);
+
+        if (optionalCommentEntity.isPresent()) {
+            CommentEntity commentEntity = optionalCommentEntity.get();
+            int myplaceId = commentEntity.getMyplaceEntity().getId();
+            commentRepository.delete(commentEntity);
+            return myplaceId;
+        } else {
+            return -1;
+        }
+    }
+
 }

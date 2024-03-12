@@ -92,8 +92,6 @@ public class MyplaceService {
         return sharedService.findByPlaceId(myplaceDTO.getId());
     }
 
-
-
     public void delete(int id) {
         myplaceRepository.deleteById(id);
     }

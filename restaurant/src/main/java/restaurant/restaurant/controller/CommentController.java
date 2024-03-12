@@ -4,14 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import restaurant.restaurant.dto.CommentDTO;
+import restaurant.restaurant.entity.CommentEntity;
 import restaurant.restaurant.service.CommentService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,4 +35,56 @@ public class CommentController {
         }
 
     }
+
+
+    // 댓글 수정 페이지로 이동
+//    @GetMapping("/edit/{id}")
+//    public String commentEditForm(@PathVariable int id, Model model) {
+//        CommentDTO commentDTO = commentService.findByCommentId(id);
+//
+//        model.addAttribute("commentEdit", commentDTO);
+//
+//        return "myplace/edit";
+//    }
+//
+//
+//    @PostMapping("/edit/{id}")
+//    public String editComment(@PathVariable int id, @RequestParam String commentContents) {
+//
+//        CommentDTO commentDTO = commentService.editComment(id, commentContents);
+//
+//        if (commentDTO != null) {
+//            return "redirect:/shared/" + commentDTO.getMyplaceId();
+//        } else {
+//            return "redirect:/shared/" + commentDTO.getMyplaceId();
+//        }
+//    }
+
+
+    // CommentController의 editComment 메서드 수정
+    @PostMapping("/edit/{id}")
+    public ResponseEntity<CommentDTO> editComment(@PathVariable int id, @RequestParam String commentContents) {
+        // 댓글 수정 로직 수행
+        CommentDTO commentDTO = commentService.editComment(id, commentContents);
+
+        if (commentDTO != null) {
+            // 댓글이 성공적으로 수정되었을 때 수정된 댓글 반환
+            return ResponseEntity.ok(commentDTO);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String commentDel(@PathVariable int id) {
+        int myplaceId = commentService.deleteAndGetMyplaceId(id);
+
+        if (myplaceId != -1) {
+            return "redirect:/shared/" + myplaceId;
+        } else {
+            return "redirect:/sgared/";
+        }
+    }
+
 }

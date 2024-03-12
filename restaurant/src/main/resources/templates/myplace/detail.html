@@ -38,7 +38,19 @@
        th:text="*{#temporals.format(myplace.createdTime, 'yyyy-MM-dd HH:mm:ss')}">
   </div>
 </div>
-<div th:replace="fragments.html :: comment"></div>
+<div id="comment-list">
+  <div class="card" bis_skin_checked="1" th:each="comment: ${commentList}" style="width: 60%; margin: 15px auto;">
+    <div class="card-body" bis_skin_checked="1">
+      <h6 class="card-subtitle mb-2 text-muted" th:text="${comment.commentWriter}"></h6>
+      <p class="card-text" th:text="${comment.commentContents}"></p>
+      <div style="text-align: right">
+        <p th:text="*{#temporals.format(comment.commentCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></p>
+        <a href="#" class="card-link">수정</a>
+        <a href="#" class="card-link">삭제</a>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 <script>
   function confirmDelete() {

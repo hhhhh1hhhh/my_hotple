@@ -69,6 +69,8 @@ public class MyplaceDTO {
         myplaceDTO.setUpdatedTime(myplaceEntity.getUpdatedTime());
         myplaceDTO.setShare(myplaceEntity.isShare());
         myplaceDTO.setUserId(myplaceEntity.getUserId());
+        myplaceDTO.setUser(myplaceEntity.getUser());
+
         myplaceDTO.setUserNickname(myplaceEntity.getUser().getNickname());
 
         if (myplaceEntity.getFileAttached() == 0) {

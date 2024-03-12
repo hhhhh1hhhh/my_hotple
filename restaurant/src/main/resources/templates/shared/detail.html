@@ -31,6 +31,8 @@
     <a href="#" class="card-link">좋아요 누르기</a>
     <div style="text-align: right">
       <a th:href="@{/shared/list(page=${page})}" class="card-link">목록</a>
+      <a th:if="${myplace.user.username == #authentication.name}" th:href="@{|/myplace/edit/${myplace.id}|}" class="card-link">수정</a>
+      <a th:if="${myplace.user.username == #authentication.name}" th:href="@{|/myplace/delete/${myplace.id}|}" class="card-link" onclick="confirmDelete()">삭제</a>
     </div>
   </div>
   <div class="card-footer text-muted" bis_skin_checked="1"
@@ -60,7 +62,6 @@
         <a href="#" class="card-link"
            th:data-comment-id="${comment.id}" th:data-comment-writer="${comment.commentWriter}" th:data-comment-contents="${comment.commentContents}"
            onclick="showEditCommentForm(this)">수정</a>
-<!--        <a href="#" class="card-link">수정</a>-->
         <a th:href="@{|/comment/delete/${comment.id}|}" class="card-link" onclick="confirmDelete()">삭제</a>
       </div>
     </div>
@@ -113,6 +114,8 @@
           output += '<p class="card-text">' + res[i].commentContents + '</p>';
           output += '<div style="text-align: right">';
           output += '<p>' + res[i].commentCreatedTime + '</p>';
+          // output += '<a href="#" class="card-link">수정</a>';
+          // output += '<a href="#" class="card-link">삭제</a>';
           output += '<a href="#" class="card-link">수정</a>';
           output += '<a href="#" class="card-link">삭제</a>';
           output += '</div></div></div>';
@@ -203,7 +206,5 @@
       event.preventDefault();
     }
   }
-
-
 </script>
 </html>

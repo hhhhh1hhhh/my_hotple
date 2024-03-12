@@ -74,7 +74,6 @@ public class SharedService {
 //        System.out.println("myplaceEntities.isFirst() = " + myplaceEntities.isFirst()); // 첫 페이지 여부
 //        System.out.println("myplaceEntities.isLast() = " + myplaceEntities.isLast()); // 마지막 페이지 여부
 
-
         return myplaceDTOS;
     }
 

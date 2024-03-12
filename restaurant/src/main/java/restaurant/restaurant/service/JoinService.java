@@ -1,18 +1,14 @@
 package restaurant.restaurant.service;
 
-import jakarta.transaction.Transactional;
-import org.aspectj.lang.annotation.Around;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import restaurant.restaurant.dto.JoinDTO;
 import restaurant.restaurant.entity.UserEntity;
 import restaurant.restaurant.repository.UserRepository;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class JoinService {

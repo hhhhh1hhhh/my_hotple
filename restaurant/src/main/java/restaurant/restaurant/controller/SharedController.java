@@ -13,7 +13,6 @@ import restaurant.restaurant.dto.CommentDTO;
 import restaurant.restaurant.dto.MyplaceDTO;
 import restaurant.restaurant.service.AuthService;
 import restaurant.restaurant.service.CommentService;
-import restaurant.restaurant.service.MyplaceService;
 import restaurant.restaurant.service.SharedService;
 
 import java.util.List;

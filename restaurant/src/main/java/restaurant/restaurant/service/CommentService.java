@@ -65,19 +65,6 @@ public class CommentService {
     }
 
 
-    // 댓글 수정
-//    public CommentDTO editComment(int id, String commentContents) {
-//        Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);
-//
-//        if (optionalCommentEntity.isPresent()) {
-//            CommentEntity commentEntity = optionalCommentEntity.get();
-//            commentEntity.setCommentContents(commentContents);
-//
-//            return CommentDTO.toCommentDTO(commentRepository.save(commentEntity), commentEntity.getMyplaceEntity().getId());
-//        } else {
-//            return null;  // 수정 실패 시 null 반환
-//        }
-//    }
 
     public CommentDTO editComment(int id, String commentContents) {
         Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);
@@ -94,12 +81,12 @@ public class CommentService {
     }
 
 
-
     public int getMyplaceIdByCommentId(int id) {
         Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);
 
         return optionalCommentEntity.map(commentEntity -> commentEntity.getMyplaceEntity().getId()).orElse(-1);
     }
+
 
     public int deleteAndGetMyplaceId(int id) {
         Optional<CommentEntity> optionalCommentEntity = commentRepository.findById(id);

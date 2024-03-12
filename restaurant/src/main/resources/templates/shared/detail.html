@@ -148,7 +148,6 @@
     const commentId = document.getElementById('editCommentCard').dataset.commentId;
     const contents = document.getElementById('editCommentContent').value;
 
-    // 서버로 수정된 댓글 정보 전송 코드
     $.ajax({
       type: "post",
       url: "/comment/edit/" + commentId,
@@ -161,16 +160,40 @@
       success: function (res) {
         console.log("댓글 수정 성공", res);
 
+        // 수정이 성공했을 때, 해당 댓글만 업데이트
+        const editedComment = document.querySelector(`[data-comment-id="${commentId}"]`);
+
+        if (editedComment && editedComment.querySelector('.card-text')) {
+          editedComment.querySelector('.card-text').innerText = contents;
+        }
+
+        const updatedComment = res;
+        updateCommentList(updatedComment);
+
         // 수정 칸을 다시 숨김
         document.getElementById('editCommentCard').style.display = 'none';
+
       },
       error: function (err) {
         console.log("댓글 수정 실패", err);
-
       }
     });
   }
 
+  // 수정된 내용을 비동기적으로 갱신하는 함수
+  function updateCommentList(updatedComment) {
+    // 기존 댓글 목록을 가져와서 배열로 변환
+    const commentList = Array.from(document.querySelectorAll('#comment-list .card'));
+
+    // 수정된 댓글과 일치하는 댓글을 찾아서 내용을 갱신
+    commentList.forEach(commentCard => {
+      const commentId = commentCard.querySelector('.card-link').getAttribute('data-comment-id');
+      if (commentId === updatedComment.id.toString()) { // 이 부분 확인
+        commentCard.querySelector('.card-subtitle').innerText = updatedComment.commentWriter;
+        commentCard.querySelector('.card-text').innerText = updatedComment.commentContents;
+      }
+    });
+  }
 
   function confirmDelete() {
     var result = confirm("삭제하시겠습니까?");

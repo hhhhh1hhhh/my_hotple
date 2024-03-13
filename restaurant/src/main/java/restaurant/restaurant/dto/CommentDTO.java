@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class CommentDTO {
     private int id;
     private String commentWriter;
+    private String commentWriterEmail;
     private String commentContents;
     private int myplaceId;
     private LocalDateTime commentCreatedTime;
@@ -21,6 +22,7 @@ public class CommentDTO {
         CommentDTO commentDTO = new CommentDTO();
         commentDTO.setId(commentEntity.getId());
         commentDTO.setCommentWriter(commentEntity.getCommentWriter());
+        commentDTO.setCommentWriterEmail(commentEntity.getCommentWriterEmail());
         commentDTO.setCommentContents(commentEntity.getCommentContents());
         commentDTO.setCommentCreatedTime(commentEntity.getCreatedTime());
 //        commentDTO.setMyplaceId(commentEntity.getMyplaceEntity().getId());

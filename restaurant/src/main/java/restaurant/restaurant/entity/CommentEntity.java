@@ -17,6 +17,8 @@ public class CommentEntity extends BaseEntity{
     @Column(length = 20, nullable = false)
     private String commentWriter;
 
+    private String commentWriterEmail;
+
     private String commentContents;
 
     /* Myplace:Comment = 1:N */
@@ -27,6 +29,7 @@ public class CommentEntity extends BaseEntity{
     public static CommentEntity toSaveEntity(CommentDTO commentDTO, MyplaceEntity myplaceEntity) {
         CommentEntity commentEntity = new CommentEntity();
         commentEntity.setCommentWriter(commentDTO.getCommentWriter());
+        commentEntity.setCommentWriterEmail(commentDTO.getCommentWriterEmail());
         commentEntity.setCommentContents(commentDTO.getCommentContents());
         commentEntity.setMyplaceEntity(myplaceEntity);
 

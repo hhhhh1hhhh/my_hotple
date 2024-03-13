@@ -30,8 +30,8 @@
     <a href="#" class="card-link">좋아요 누르기</a>
     <div style="text-align: right">
       <a th:href="@{/myplace/list(page=${page})}" class="card-link">목록</a>
-      <a th:href="@{|/myplace/edit/${myplace.id}|}" class="card-link">수정</a>
-      <a th:href="@{|/myplace/delete/${myplace.id}|}" class="card-link" onclick="confirmDelete()">삭제</a>
+      <a th:if="${myplace.user.username == #authentication.name}" th:href="@{|/myplace/edit/${myplace.id}|}" class="card-link">수정</a>
+      <a th:if="${myplace.user.username == #authentication.name}" th:href="@{|/myplace/delete/${myplace.id}|}" class="card-link" onclick="confirmDelete()">삭제</a>
     </div>
   </div>
   <div class="card-footer text-muted" bis_skin_checked="1"

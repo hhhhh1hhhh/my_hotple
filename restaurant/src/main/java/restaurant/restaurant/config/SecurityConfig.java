@@ -25,6 +25,7 @@ public BCryptPasswordEncoder bCryptPasswordEncoder() {
 public AuthenticationFailureHandler authenticationFailureHandler () {
     return new CustomAuthenticationFailureHandler();
 }
+
 @Bean
 public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return new CustomAuthenticationSuccessHandler();
@@ -50,7 +51,7 @@ public AuthenticationSuccessHandler authenticationSuccessHandler() {
                         .loginPage("/login")
                         .loginProcessingUrl("/loginProc")
                         .defaultSuccessUrl("/")
-//                        .failureUrl("/login?error")
+                        .failureUrl("/login?error")
                         .successHandler(authenticationSuccessHandler())
                         .failureHandler(authenticationFailureHandler())
                         .usernameParameter("username")

@@ -107,6 +107,7 @@ public class MyplaceEntity extends BaseEntity{
         myplaceEntity.setShare(myplaceDTO.isShare());
         myplaceEntity.setUserId(myplaceDTO.getUserId());
 
+
         return myplaceEntity;
 
     }

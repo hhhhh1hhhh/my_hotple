@@ -51,7 +51,6 @@
     <button type="button" class="btn btn-success" style="float: right;" onclick="commentWrite()">댓글작성</button>
   </div>
 </div>
-
 <div th:unless="${#authorization.expression('isAuthenticated()')}"
      class="card" bis_skin_checked="1" style="width: 60%; margin: 50px auto;">
   <div class="card-body" bis_skin_checked="1">
@@ -62,8 +61,6 @@
     <button type="button" class="btn btn-success" style="float: right;">댓글작성</button>
   </div>
 </div>
-
-
 <div id="comment-list">
   <div class="card" bis_skin_checked="1" th:each="comment: ${commentList}" style="width: 60%; margin: 15px auto;">
     <div class="card-body" bis_skin_checked="1">
@@ -89,7 +86,6 @@
     <button type="button" class="btn btn-success" style="float: right;" onclick="editComment()">댓글수정</button>
   </div>
 </div>
-
 </body>
 <script th:inline="javascript">
   const commentWrite = () => {
@@ -142,11 +138,11 @@
     })
   }
 
-  // 이 함수를 추가하여 수정 칸이 나타나도록 합니다.
   function showEditCommentForm(element) {
     var commentId = element.getAttribute('data-comment-id');
     var commentWriter = element.getAttribute('data-comment-writer');
     var commentContents = element.getAttribute('data-comment-contents');
+
     // 수정 칸이 나타나도록 설정
     document.getElementById('editCommentCard').style.display = 'block';
 

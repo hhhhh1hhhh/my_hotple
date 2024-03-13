@@ -81,11 +81,25 @@ public class MyplaceService {
         return myplaceDTOS;
     }
 
-    public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
-        MyplaceEntity myplaceEntity = MyplaceEntity.toEditEntity(myplaceDTO);
 
-        myplaceRepository.save(myplaceEntity);
-        return sharedService.findByPlaceId(myplaceDTO.getId());
+    public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
+        MyplaceEntity existingEntity = myplaceRepository.findById(myplaceDTO.getId()).orElse(null);
+        if (existingEntity != null) {
+
+            existingEntity.setPlaceName(myplaceDTO.getPlaceName());
+            existingEntity.setAddress(myplaceDTO.getAddress());
+            existingEntity.setCategory(myplaceDTO.getCategory());
+            existingEntity.setContents(myplaceDTO.getContents());
+            existingEntity.setShare(myplaceDTO.isShare());
+            existingEntity.setUserId(myplaceDTO.getUserId());
+
+            myplaceRepository.save(existingEntity);
+
+            MyplaceDTO updatedDTO = sharedService.findByPlaceId(myplaceDTO.getId());
+            return updatedDTO;
+        } else {
+            return null;
+        }
     }
 
     public void delete(int id) {

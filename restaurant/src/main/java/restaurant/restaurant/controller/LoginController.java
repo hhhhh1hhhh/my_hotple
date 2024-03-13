@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
 
+
     @GetMapping("/login")
     public String loginP(@RequestParam(value = "error", required = false) String error,
                         @RequestParam(value = "exception", required = false) String exception,
@@ -17,6 +18,7 @@ public class LoginController {
         /* 에러와 예외를 모델에 담아 view resolve */
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
+
         return "/login";
     }
 

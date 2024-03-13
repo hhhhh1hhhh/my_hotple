@@ -19,16 +19,16 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String NotLoggedMainP() {
-
-        return "not_logged_main";
-    }
-
-
-    @GetMapping("/main")
-    public String LoggedMainP(Model model) {
+    public String MainP(Model model) {
         authService.setUserData(model);
-        return "logged_main";
+        return "main";
     }
+//
+//
+//    @GetMapping("/main")
+//    public String LoggedMainP(Model model) {
+//        authService.setUserData(model);
+//        return "logged_main";
+//    }
 
 }

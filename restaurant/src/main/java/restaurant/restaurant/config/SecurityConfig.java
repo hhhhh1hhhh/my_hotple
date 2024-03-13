@@ -38,7 +38,7 @@ public AuthenticationSuccessHandler authenticationSuccessHandler() {
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/", "/login", "/join", "/joinProc", "/map", "check_duplicate",
-                                "/myplace/**", "/shared/**", "/comment/**",
+                                "/shared/**", "/comment/**",
                                 "/js/**", "/css/**").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/my/**").hasAnyRole("ADMIN", "USER")
@@ -49,7 +49,7 @@ public AuthenticationSuccessHandler authenticationSuccessHandler() {
                 .formLogin((auth) -> auth
                         .loginPage("/login")
                         .loginProcessingUrl("/loginProc")
-                        .defaultSuccessUrl("/main")
+                        .defaultSuccessUrl("/")
 //                        .failureUrl("/login?error")
                         .successHandler(authenticationSuccessHandler())
                         .failureHandler(authenticationFailureHandler())

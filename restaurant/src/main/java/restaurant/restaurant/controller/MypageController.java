@@ -1,34 +1,24 @@
 package restaurant.restaurant.controller;
 
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import restaurant.restaurant.service.AuthService;
 
-
-
 @Controller
-public class MainController {
+@RequiredArgsConstructor
+@RequestMapping("/mypage")
+public class MypageController {
 
     private final AuthService authService;
 
-    public MainController(AuthService authService) {
-        this.authService = authService;
-    }
-
-    @GetMapping("/")
-    public String MainP(Model model) {
+    @GetMapping("")
+    public String MypageP(Model model) {
         authService.setUserData(model);
-        return "main";
+        return "mypage";
     }
-
-//    @GetMapping("/mypage")
-//    public String MypageP(Model model) {
-//        authService.setUserData(model);
-//        return "mypage";
-//    }
 
 
 }

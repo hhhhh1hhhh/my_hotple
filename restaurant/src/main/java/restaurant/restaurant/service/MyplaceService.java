@@ -93,6 +93,8 @@ public class MyplaceService {
             existingEntity.setShare(myplaceDTO.isShare());
             existingEntity.setUserId(myplaceDTO.getUserId());
 
+            // if문으로 파일이 있는 경우, 없는 경우 처리 다르게
+
             myplaceRepository.save(existingEntity);
 
             MyplaceDTO updatedDTO = sharedService.findByPlaceId(myplaceDTO.getId());

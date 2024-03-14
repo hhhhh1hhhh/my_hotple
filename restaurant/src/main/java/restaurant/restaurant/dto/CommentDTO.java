@@ -17,6 +17,7 @@ public class CommentDTO {
     private String commentContents;
     private int myplaceId;
     private LocalDateTime commentCreatedTime;
+    private LocalDateTime commentUpdatedTime;
 
     public static CommentDTO toCommentDTO(CommentEntity commentEntity, Integer myplaceId) {
         CommentDTO commentDTO = new CommentDTO();
@@ -25,6 +26,7 @@ public class CommentDTO {
         commentDTO.setCommentWriterEmail(commentEntity.getCommentWriterEmail());
         commentDTO.setCommentContents(commentEntity.getCommentContents());
         commentDTO.setCommentCreatedTime(commentEntity.getCreatedTime());
+        commentDTO.setCommentUpdatedTime(commentEntity.getUpdatedTime());
 //        commentDTO.setMyplaceId(commentEntity.getMyplaceEntity().getId());
         commentDTO.setMyplaceId(myplaceId);
 

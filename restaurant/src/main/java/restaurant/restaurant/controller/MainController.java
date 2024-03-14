@@ -23,12 +23,13 @@ public class MainController {
         authService.setUserData(model);
         return "main";
     }
-//
-//
-//    @GetMapping("/main")
-//    public String LoggedMainP(Model model) {
-//        authService.setUserData(model);
-//        return "logged_main";
-//    }
+
+
+    @GetMapping("/mypage")
+    public String MypageP(Model model) {
+        authService.setUserData(model);
+        return "mypage";
+    }
+
 
 }

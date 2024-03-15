@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@Table(name="myplace_entity")
 public class MyplaceEntity extends BaseEntity{
 
     @Id
@@ -30,8 +31,6 @@ public class MyplaceEntity extends BaseEntity{
     private String contents; // 내용
 
     private boolean share; // 공유 여부
-
-    private int likes; // 좋아요
 
     private int views; // 조회수
 
@@ -67,7 +66,6 @@ public class MyplaceEntity extends BaseEntity{
         myplaceEntity.setCategory(myplaceDTO.getCategory());
         myplaceEntity.setContents(myplaceDTO.getContents());
         myplaceEntity.setViews(0);
-        myplaceEntity.setLikes(0);
         myplaceEntity.setShare(myplaceDTO.isShare());
         myplaceEntity.setUserId(myplaceDTO.getUserId());
         myplaceEntity.setFileAttached(0); // 파일 없음.
@@ -85,7 +83,6 @@ public class MyplaceEntity extends BaseEntity{
         myplaceEntity.setCategory(myplaceDTO.getCategory());
         myplaceEntity.setContents(myplaceDTO.getContents());
         myplaceEntity.setViews(0);
-        myplaceEntity.setLikes(0);
         myplaceEntity.setShare(myplaceDTO.isShare());
         myplaceEntity.setUserId(myplaceDTO.getUserId());
         myplaceEntity.setFileAttached(1); // 파일 있음.
@@ -103,7 +100,6 @@ public class MyplaceEntity extends BaseEntity{
         myplaceEntity.setCategory(myplaceDTO.getCategory());
         myplaceEntity.setContents(myplaceDTO.getContents());
         myplaceEntity.setViews(myplaceDTO.getViews());
-        myplaceEntity.setLikes(myplaceDTO.getLikes());
         myplaceEntity.setShare(myplaceDTO.isShare());
         myplaceEntity.setUserId(myplaceDTO.getUserId());
 

@@ -23,7 +23,6 @@ public class MyplaceDTO {
     private String category;
     private String contents;
     private boolean share;
-    private int likes;
     private int views;
 
     private LocalDateTime createdTime;
@@ -40,7 +39,7 @@ public class MyplaceDTO {
 
 
     public MyplaceDTO(int id, String placeName, String address, String category, String contents,
-                      boolean share, int views, int likes, LocalDateTime createdTime,
+                      boolean share, int views, LocalDateTime createdTime,
                       int userId, String userNickname) {
         this.id = id;
         this.placeName = placeName;
@@ -49,7 +48,6 @@ public class MyplaceDTO {
         this.contents = contents;
         this.share = share;
         this.views = views;
-        this.likes = likes;
         this.createdTime = createdTime;
         this.userId = userId;
         this.userNickname = userNickname;
@@ -64,7 +62,6 @@ public class MyplaceDTO {
         myplaceDTO.setCategory(myplaceEntity.getCategory());
         myplaceDTO.setContents(myplaceEntity.getContents());
         myplaceDTO.setViews(myplaceEntity.getViews());
-        myplaceDTO.setLikes(myplaceEntity.getLikes());
         myplaceDTO.setCreatedTime(myplaceEntity.getCreatedTime());
         myplaceDTO.setUpdatedTime(myplaceEntity.getUpdatedTime());
         myplaceDTO.setShare(myplaceEntity.isShare());

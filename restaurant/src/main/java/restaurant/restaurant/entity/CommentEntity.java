@@ -21,8 +21,6 @@ public class CommentEntity extends BaseEntity{
 
     private String commentContents;
 
-
-
     /* Myplace:Comment = 1:N */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "myplace_id")
@@ -37,5 +35,4 @@ public class CommentEntity extends BaseEntity{
 
         return commentEntity;
     }
-
 }

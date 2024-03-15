@@ -75,7 +75,7 @@ public class MyplaceService {
 
         Page<MyplaceDTO> myplaceDTOS = myplaceEntities.map(myplace
                 -> new MyplaceDTO(myplace.getId(), myplace.getPlaceName(), myplace.getAddress(),
-                myplace.getCategory(), myplace.getContents(), myplace.isShare(), myplace.getViews(), myplace.getLikes(),
+                myplace.getCategory(), myplace.getContents(), myplace.isShare(), myplace.getViews(),
                 myplace.getCreatedTime(), myplace.getUserId(), myplace.getUser().getNickname()));
 
         return myplaceDTOS;

@@ -62,7 +62,7 @@ public class SharedService {
 
         Page<MyplaceDTO> myplaceDTOS = myplaceEntities.map(myplace
                 -> new MyplaceDTO(myplace.getId(), myplace.getPlaceName(), myplace.getAddress(),
-                myplace.getCategory(), myplace.getContents(), myplace.isShare(), myplace.getViews(), myplace.getLikes(),
+                myplace.getCategory(), myplace.getContents(), myplace.isShare(), myplace.getViews(),
                 myplace.getCreatedTime(), myplace.getUserId(), myplace.getUser().getNickname()));
 
 //        System.out.println("myplaceEntities.getContent() = " + myplaceEntities.getContent()); // 요청 페이지에 해당하는 글

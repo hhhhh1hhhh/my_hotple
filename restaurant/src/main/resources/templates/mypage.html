@@ -2,24 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <div th:replace="fragments.html :: main-head"></div>
-    <link th:href="@{/css/mainmap.css}"
-          href="../css/mainMap.css" rel="stylesheet">
-    <title>My Hotple Main Page</title>
+    <link th:href="@{/css/mainmap.css}" href="../css/mainMap.css" rel="stylesheet">
+    <title>My Hotple My Page</title>
 </head>
 <body>
 <nav th:replace="fragments.html :: main-nav"></nav>
 <h2 align="center" style="margin-top: 50px; margin-bottom: 50px">My Page</h2>
 <div style="display: flex; justify-content: center;">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Profile</a></li>
-         <li class="breadcrumb-item"><a href="#">Comment</a></li>
+        <li class="breadcrumb-item"><a href="#profile" onclick="showDiv('profile')">Profile</a></li>
+        <li class="breadcrumb-item"><a href="#comment" onclick="showDiv('comment')">Comment</a></li>
     </ol>
 </div>
-<div style="flex-direction: column; width: 30%; margin: 0 auto;">
+<div id="profile" style="flex-direction: column; width: 30%; margin: 0 auto;">
     <div bis_skin_checked="1">
         <fieldset>
             <label class="form-label mt-4">Name</label>
-            <input class="form-control" type="text"  readonly th:value="${nickname}">
+            <input class="form-control" type="text" readonly th:value="${nickname}">
         </fieldset>
     </div>
     <div bis_skin_checked="1">
@@ -29,5 +28,39 @@
         </fieldset>
     </div>
 </div>
+<div id="comment" style="display: none; flex-direction: column; width: 70%; margin: 0 auto;">
+    <div bis_skin_checked="1">
+        <table class="table table-hover" style="text-align: center; width: 75%;  margin: 40px auto;">
+            <thead>
+            <tr class="table-primary">
+                <th scope="col">번호</th>
+                <th scope="col">게시글</th>
+                <th scope="col">댓글 내용</th>
+                <th scope="col">작성 시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-light" th:each="comment: ${commentList}">
+                <td th:text="${comment.id}"></td>
+                <td><a th:href="@{|/shared/${comment.myplaceId}|}" th:text="${comment.placeName} "></a></td>
+                <td th:text="${comment.commentContents}"></td>
+                <td th:text="${comment.commentUpdatedTime != null} ? *{#temporals.format(comment.commentUpdatedTime, 'yyyy-MM-dd HH:mm:ss')} : *{#temporals.format(comment.commentCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    // 페이지 로드시에 프로필 div는 보이도록 처리
+    document.getElementById('profile').style.display = "block";
+
+    function showDiv(divId) {
+        var divsToHide = document.querySelectorAll('div[id^="profile"], div[id^="comment"]');
+        for (var i = 0; i < divsToHide.length; i++) {
+            divsToHide[i].style.display = "none"; // 모든 프로필과 코멘트 div를 숨김 처리
+        }
+        document.getElementById(divId).style.display = "block"; // 선택한 div만 보이도록 처리
+    }
+</script>
 </body>
 </html>

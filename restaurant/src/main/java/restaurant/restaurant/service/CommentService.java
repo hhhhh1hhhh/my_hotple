@@ -3,12 +3,15 @@ package restaurant.restaurant.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import restaurant.restaurant.dto.CommentDTO;
+import restaurant.restaurant.dto.MyplaceDTO;
 import restaurant.restaurant.entity.CommentEntity;
 import restaurant.restaurant.entity.MyplaceEntity;
 import restaurant.restaurant.repository.CommentRepository;
 import restaurant.restaurant.repository.MyplaceRepository;
 
+import javax.xml.stream.events.Comment;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -62,6 +65,34 @@ public class CommentService {
         } else {
             return null;
         }
+    }
+
+    public List<MyplaceDTO> findByUserId(Model model) {
+        Integer userId = (Integer) model.getAttribute("id");
+        List<MyplaceEntity> myplaceEntityList = myplaceRepository.findByUser_Id(userId);
+        List<MyplaceDTO> myplaceDTOList = new ArrayList<>();
+
+        for (MyplaceEntity myplaceEntity : myplaceEntityList) {
+            myplaceDTOList.add(MyplaceDTO.toMyplaceDTO(myplaceEntity));
+        }
+
+        return myplaceDTOList;
+    }
+
+
+
+
+    public List<CommentDTO> findCommentsByWriterEmail(String writerEmail) {
+        List<CommentEntity> commentEntityList = commentRepository.findByCommentWriterEmail(writerEmail);
+
+        /* EntityList -> DTOList */
+        List<CommentDTO> commentDTOList = new ArrayList<>();
+        for (CommentEntity commentEntity: commentEntityList) {
+            CommentDTO commentDTO = CommentDTO.toCommentDTO2(commentEntity, writerEmail);
+            commentDTOList.add(commentDTO);
+        }
+        return commentDTOList;
+
     }
 
 

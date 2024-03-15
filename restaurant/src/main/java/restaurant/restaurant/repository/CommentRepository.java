@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<CommentEntity, Integer> {
     List<CommentEntity> findAllByMyplaceEntityOrderByIdDesc(MyplaceEntity myplaceEntity);
+
+    List<CommentEntity> findByCommentWriterEmail(String commentWriterEmail);
 }

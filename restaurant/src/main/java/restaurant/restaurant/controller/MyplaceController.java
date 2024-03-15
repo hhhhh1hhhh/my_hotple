@@ -98,6 +98,7 @@ public class MyplaceController {
         return "redirect:/myplace/" + myplaceDTO.getId();
     }
 
+
     @GetMapping("/delete/{id}")
     public String myplaceDel(@PathVariable int id) {
         myplaceService.delete(id);

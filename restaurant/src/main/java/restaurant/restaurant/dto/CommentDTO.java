@@ -3,7 +3,10 @@ package restaurant.restaurant.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.aop.scope.ScopedObject;
 import restaurant.restaurant.entity.CommentEntity;
+import restaurant.restaurant.entity.MyplaceEntity;
+import restaurant.restaurant.entity.UserEntity;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +21,7 @@ public class CommentDTO {
     private int myplaceId;
     private LocalDateTime commentCreatedTime;
     private LocalDateTime commentUpdatedTime;
+    private String placeName;
 
     public static CommentDTO toCommentDTO(CommentEntity commentEntity, Integer myplaceId) {
         CommentDTO commentDTO = new CommentDTO();
@@ -29,6 +33,21 @@ public class CommentDTO {
         commentDTO.setCommentUpdatedTime(commentEntity.getUpdatedTime());
 //        commentDTO.setMyplaceId(commentEntity.getMyplaceEntity().getId());
         commentDTO.setMyplaceId(myplaceId);
+
+        return commentDTO;
+    }
+
+    public static CommentDTO toCommentDTO2(CommentEntity commentEntity, String commentWriterEmail) {
+        CommentDTO commentDTO = new CommentDTO();
+        commentDTO.setId(commentEntity.getId());
+        commentDTO.setCommentWriter(commentEntity.getCommentWriter());
+        commentDTO.setCommentWriterEmail(commentEntity.getCommentWriterEmail());
+        commentDTO.setCommentContents(commentEntity.getCommentContents());
+        commentDTO.setCommentCreatedTime(commentEntity.getCreatedTime());
+        commentDTO.setCommentUpdatedTime(commentEntity.getUpdatedTime());
+        commentDTO.setMyplaceId(commentEntity.getMyplaceEntity().getId());
+        commentDTO.setPlaceName(commentEntity.getMyplaceEntity().getPlaceName());
+//        commentDTO.setMyplaceId(myplaceId);
 
         return commentDTO;
     }

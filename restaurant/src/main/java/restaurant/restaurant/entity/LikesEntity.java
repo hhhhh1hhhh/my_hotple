@@ -18,9 +18,10 @@ public class LikesEntity {
     @JoinColumn(name = "myplaceId", referencedColumnName = "id")
     private MyplaceEntity myplace;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private UserEntity user;
+
 
     public void setMyplaceId(int myplaceId) {
         this.myplace = new MyplaceEntity();

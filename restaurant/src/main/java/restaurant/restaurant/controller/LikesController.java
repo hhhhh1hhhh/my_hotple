@@ -18,6 +18,7 @@ public class LikesController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addLike(@RequestBody LikesDTO likesDTO) {
+
         likesService.saveLike(likesDTO);
         return ResponseEntity.ok("Like added successfully");
     }

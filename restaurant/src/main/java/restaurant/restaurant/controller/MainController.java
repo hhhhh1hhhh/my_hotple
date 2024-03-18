@@ -28,10 +28,6 @@ public class MainController {
         return "main";
     }
 
-    @GetMapping("/map")
-    public String MapP() {
-        return "map";
-    }
 
     @GetMapping("/mypage")
     public String MypageP(Model model) {

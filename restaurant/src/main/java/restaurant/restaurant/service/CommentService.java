@@ -80,8 +80,6 @@ public class CommentService {
     }
 
 
-
-
     public List<CommentDTO> findCommentsByWriterEmail(String writerEmail) {
         List<CommentEntity> commentEntityList = commentRepository.findByCommentWriterEmail(writerEmail);
 
@@ -94,7 +92,6 @@ public class CommentService {
         return commentDTOList;
 
     }
-
 
 
     public CommentDTO editComment(int id, String commentContents) {

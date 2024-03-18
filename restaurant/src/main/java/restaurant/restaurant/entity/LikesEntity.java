@@ -8,19 +8,28 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "like_table")
-
 public class LikesEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "myplace_id")
-    private MyplaceEntity myplaceEntity;
+    @ManyToOne
+    @JoinColumn(name = "myplaceId", referencedColumnName = "id")
+    private MyplaceEntity myplace;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private MyplaceEntity userEntity;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private UserEntity user;
+
+    public void setMyplaceId(int myplaceId) {
+        this.myplace = new MyplaceEntity();
+        this.myplace.setId(myplaceId);
+    }
+
+    public void setUserId(int userId) {
+        this.user = new UserEntity();
+        this.user.setId(userId);
+    }
 
 }

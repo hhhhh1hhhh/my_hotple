@@ -1,6 +1,6 @@
 package restaurant.restaurant.repository;
 
-import jakarta.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import restaurant.restaurant.entity.MyplaceFileEntity;
 

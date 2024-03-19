@@ -112,7 +112,12 @@
       }),
       success: function (res) {
         console.log("좋아요 요청 성공", res);
-
+        // 서버로부터 받은 응답 메시지를 확인하여 알림창 띄우기
+        if (res === "Like added successfully") {
+          alert("좋아요를 눌렀습니다!");
+        } else if (res === "Like removed successfully") {
+          alert("좋아요를 취소했습니다.");
+        }
       },
       error: function (err) {
         console.log("좋아요 요청 실패", err);

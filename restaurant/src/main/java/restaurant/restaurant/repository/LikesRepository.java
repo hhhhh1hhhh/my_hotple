@@ -2,7 +2,6 @@ package restaurant.restaurant.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import restaurant.restaurant.entity.LikesEntity;
-import restaurant.restaurant.entity.MyplaceEntity;
 
 import java.util.List;
 

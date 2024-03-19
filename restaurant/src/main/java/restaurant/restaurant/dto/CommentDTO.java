@@ -3,10 +3,8 @@ package restaurant.restaurant.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.aop.scope.ScopedObject;
 import restaurant.restaurant.entity.CommentEntity;
-import restaurant.restaurant.entity.MyplaceEntity;
-import restaurant.restaurant.entity.UserEntity;
+
 
 import java.time.LocalDateTime;
 

@@ -11,7 +11,6 @@ import restaurant.restaurant.entity.MyplaceEntity;
 import restaurant.restaurant.repository.CommentRepository;
 import restaurant.restaurant.repository.MyplaceRepository;
 
-import javax.xml.stream.events.Comment;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

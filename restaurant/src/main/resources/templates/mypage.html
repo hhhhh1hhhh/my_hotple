@@ -12,6 +12,8 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#profile" onclick="showDiv('profile')">Profile</a></li>
         <li class="breadcrumb-item"><a href="#comment" onclick="showDiv('comment')">Comment</a></li>
+        <li class="breadcrumb-item"><a href="#comment" onclick="showDiv('likes')">Likes</a></li>
+
     </ol>
 </div>
 <div id="profile" style="flex-direction: column; width: 30%; margin: 0 auto;">
@@ -28,7 +30,8 @@
         </fieldset>
     </div>
 </div>
-<div id="comment" style="display: none; flex-direction: column; width: 70%; margin: 0 auto;">
+<div id="comment" style="display: none; flex-direction: column; width: 70%; margin: 0 a
+uto;">
     <div bis_skin_checked="1">
         <table class="table table-hover" style="text-align: center; width: 75%;  margin: 40px auto;">
             <thead>
@@ -42,9 +45,27 @@
             <tbody>
             <tr class="table-light" th:each="comment: ${commentList}">
                 <td th:text="${comment.id}"></td>
-                <td><a th:href="@{|/shared/${comment.myplaceId}|}" th:text="${comment.placeName} "></a></td>
+                <td><a th:href="@{|/shared/${comment.myplaceId}|}" th:text="${comment.placeName}"></a></td>
                 <td th:text="${comment.commentContents}"></td>
                 <td th:text="${comment.commentUpdatedTime != null} ? *{#temporals.format(comment.commentUpdatedTime, 'yyyy-MM-dd HH:mm:ss')} : *{#temporals.format(comment.commentCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="likes" style="display: none; flex-direction: column; width: 50%; margin: 0 auto;">
+    <div bis_skin_checked="1">
+        <table class="table table-hover" style="text-align: center; width: 75%;  margin: 40px auto;">
+            <thead>
+            <tr class="table-primary">
+                <th scope="col">번호</th>
+                <th scope="col">게시글</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-light" th:each="likes: ${likesList}">
+                <td th:text="${likes.myplaceId}"></td>
+                <td><a th:href="@{|/shared/${likes.myplaceId}|}" th:text="${likes.myplaceEntity.placeName}"></a></td>
             </tr>
             </tbody>
         </table>
@@ -55,7 +76,7 @@
     document.getElementById('profile').style.display = "block";
 
     function showDiv(divId) {
-        var divsToHide = document.querySelectorAll('div[id^="profile"], div[id^="comment"]');
+        var divsToHide = document.querySelectorAll('div[id^="profile"], div[id^="comment"], div[id^="likes"]');
         for (var i = 0; i < divsToHide.length; i++) {
             divsToHide[i].style.display = "none"; // 모든 프로필과 코멘트 div를 숨김 처리
         }

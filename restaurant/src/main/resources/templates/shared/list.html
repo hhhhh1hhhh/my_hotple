@@ -16,7 +16,6 @@
         <th scope="col">글쓴이</th>
         <th scope="col">작성일</th>
         <th scope="col">조회</th>
-        <th scope="col">좋아요</th>
     </tr>
     </thead>
     <tbody>
@@ -27,7 +26,6 @@
         <td th:text="${myplace.userNickname}"></td>
         <td th:text="*{#temporals.format(myplace.createdTime, 'yyyy-MM-dd HH:mm')}"></td>
         <td th:text="${myplace.views}"></td>
-<!--        <td th:text="${myplace.likes}"></td>-->
     </tr>
     </tbody>
 </table>

@@ -6,9 +6,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import restaurant.restaurant.dto.CommentDTO;
+import restaurant.restaurant.dto.LikesDTO;
 import restaurant.restaurant.entity.CommentEntity;
 import restaurant.restaurant.service.AuthService;
 import restaurant.restaurant.service.CommentService;
+import restaurant.restaurant.service.LikesService;
 
 
 import java.util.List;
@@ -19,8 +21,6 @@ import java.util.List;
 public class MainController {
 
     private final AuthService authService;
-    private final CommentService commentService;
-
 
     @GetMapping("/")
     public String MainP(Model model) {
@@ -29,15 +29,4 @@ public class MainController {
     }
 
 
-    @GetMapping("/mypage")
-    public String MypageP(Model model) {
-        authService.setUserData(model);
-        String useremail = (String) model.getAttribute("username");
-
-        List<CommentDTO> commentList = commentService.findCommentsByWriterEmail(useremail);
-
-        model.addAttribute("commentList", commentList);
-
-        return "mypage";
-    }
 }

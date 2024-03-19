@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import restaurant.restaurant.dto.MyplaceDTO;
 import restaurant.restaurant.entity.MyplaceEntity;
+import restaurant.restaurant.repository.LikesRepository;
 import restaurant.restaurant.repository.MyplaceRepository;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class SharedService {
 
     private final MyplaceRepository myplaceRepository;
+    private final LikesRepository likesRepository;
 
 
     @Transactional
@@ -53,6 +55,7 @@ public class SharedService {
 
     }
 
+
     public Page<MyplaceDTO> paging(Pageable pageable) {
         int page = pageable.getPageNumber() - 1;
         int pageLimit = 10; // 한 페이지에 보여줄 글 갯수
@@ -76,5 +79,8 @@ public class SharedService {
 
         return myplaceDTOS;
     }
+
+
+
 
 }

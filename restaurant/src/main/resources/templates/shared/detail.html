@@ -111,12 +111,10 @@
         "userId": userId
       }),
       success: function (res) {
-        console.log("요청 후", myplaceId, userId);
         console.log("좋아요 요청 성공", res);
 
       },
       error: function (err) {
-        console.log("요청 후", myplaceId, userId);
         console.log("좋아요 요청 실패", err);
       }
     });

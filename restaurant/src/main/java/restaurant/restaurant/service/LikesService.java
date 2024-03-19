@@ -10,6 +10,10 @@ import restaurant.restaurant.entity.UserEntity;
 import restaurant.restaurant.repository.LikesRepository;
 import restaurant.restaurant.repository.UserRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Service
 @RequiredArgsConstructor
 public class LikesService {
@@ -41,6 +45,22 @@ public class LikesService {
         } else {
             System.out.println("좋아요를 찾을 수 없습니다..");
         }
+    }
+
+    public List<LikesDTO> findLikesByUserId(int userId) {
+        List<LikesEntity> likesEntityList = likesRepository.findByUser_Id(userId);
+
+        // EntityList -> DTOList
+        List<LikesDTO> likesDTOList = new ArrayList<>();
+        for (LikesEntity likesEntity : likesEntityList) {
+            LikesDTO likesDTO = new LikesDTO();
+            likesDTO.setId(likesEntity.getId());
+            likesDTO.setMyplaceId(likesEntity.getMyplace().getId());
+            likesDTO.setUserId(likesEntity.getUser().getId());
+            likesDTO.setMyplaceEntity(likesEntity.getMyplace());
+            likesDTOList.add(likesDTO);
+        }
+        return likesDTOList;
     }
 
 

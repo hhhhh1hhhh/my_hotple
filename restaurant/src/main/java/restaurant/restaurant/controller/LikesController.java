@@ -28,7 +28,8 @@ public class LikesController {
             likesService.saveLike(likesDTO);
             return ResponseEntity.ok("Like added successfully");
         } else {
-            return ResponseEntity.ok("Already liked this place.");
+            likesService.deleteLike(userId, myplaceId);
+            return ResponseEntity.ok("Like removed successfully");
         }
     }
 }

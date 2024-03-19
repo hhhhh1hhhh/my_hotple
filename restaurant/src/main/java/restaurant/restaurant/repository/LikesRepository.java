@@ -6,4 +6,7 @@ import restaurant.restaurant.entity.LikesEntity;
 public interface LikesRepository extends JpaRepository<LikesEntity, Integer> {
     boolean existsByUser_IdAndMyplace_Id(int userId, int myplaceId);
 
+    void deleteByUser_IdAndMyplace_Id(int userId, int myplaceId);
+
+
 }

@@ -27,4 +27,10 @@ public class LikesService {
 
         likesRepository.save(likesEntity);
     }
+
+    public boolean isLikedByUser(int userId, int myplaceId) {
+        return likesRepository.existsByUser_IdAndMyplace_Id(userId, myplaceId);
+    }
+
+
 }

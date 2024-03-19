@@ -16,10 +16,19 @@ public class LikesController {
 
     private final LikesService likesService;
 
+
     @PostMapping("/add")
     public ResponseEntity<String> addLike(@RequestBody LikesDTO likesDTO) {
+        int userId = likesDTO.getUserId();
+        int myplaceId = likesDTO.getMyplaceId();
 
-        likesService.saveLike(likesDTO);
-        return ResponseEntity.ok("Like added successfully");
+        boolean isLiked = likesService.isLikedByUser(userId, myplaceId);
+
+        if (!isLiked) {
+            likesService.saveLike(likesDTO);
+            return ResponseEntity.ok("Like added successfully");
+        } else {
+            return ResponseEntity.ok("Already liked this place.");
+        }
     }
 }

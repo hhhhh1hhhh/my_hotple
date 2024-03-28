@@ -46,6 +46,9 @@ public class MyplaceEntity extends BaseEntity{
     @OneToMany(mappedBy = "myplaceEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<CommentEntity> commentEntityList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "myplace", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<LikesEntity> likesEntityList = new ArrayList<>();
+
 
     public void setUserId(int userId) {
         this.user = new UserEntity();

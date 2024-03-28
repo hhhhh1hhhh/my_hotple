@@ -105,6 +105,7 @@ public class MyplaceService {
     }
 
     public void delete(int id) {
+
         myplaceRepository.deleteById(id);
     }
 }

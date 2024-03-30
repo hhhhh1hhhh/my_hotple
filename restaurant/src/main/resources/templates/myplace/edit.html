@@ -42,7 +42,7 @@
             <input class="form-control" type="file" id="formFile" name="photo">
         </div>
         <!-- 파일이 첨부되어 있는 경우 표시할 부분 -->
-        <div th:if="${myplaceEdit.originalFileName != null}" class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto;">
+        <div th:unless="${#lists.isEmpty(myplaceEdit.originalFileName) or myplaceEdit.originalFileName[0] == ''}" class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto;">
             <label class="form-label mt-4">현재 첨부된 파일</label>
             <div>
                 <!-- 각 파일에 대한 정보를 반복하여 표시 -->

@@ -4,15 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import restaurant.restaurant.dto.CommentDTO;
 import restaurant.restaurant.dto.MyplaceDTO;
-import restaurant.restaurant.service.AuthService;
-import restaurant.restaurant.service.CommentService;
-import restaurant.restaurant.service.MyplaceService;
-import restaurant.restaurant.service.SharedService;
+import restaurant.restaurant.service.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,6 +25,7 @@ public class MyplaceController {
     private final MyplaceService myplaceService;
     private final SharedService sharedService;
     private final CommentService commentService;
+    private final MyplaceFileService myplaceFileService;
 
 
     @GetMapping("/list")

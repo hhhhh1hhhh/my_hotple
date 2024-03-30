@@ -28,6 +28,7 @@ public class MyplaceService {
     private final MyplaceFileRepository myplaceFileRepository;
 
     public void save(MyplaceDTO myplaceDTO) throws IOException {
+        System.out.println("띠용: " + myplaceDTO.getFile().isEmpty());
         // 파일 첨부 여부에 따라 로직 분리
         if (myplaceDTO.getFile().isEmpty()) {
             // 첨부 파일 없음.
@@ -82,6 +83,28 @@ public class MyplaceService {
     }
 
 
+//    public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
+//        MyplaceEntity existingEntity = myplaceRepository.findById(myplaceDTO.getId()).orElse(null);
+//        if (existingEntity != null) {
+//
+//            existingEntity.setPlaceName(myplaceDTO.getPlaceName());
+//            existingEntity.setAddress(myplaceDTO.getAddress());
+//            existingEntity.setCategory(myplaceDTO.getCategory());
+//            existingEntity.setContents(myplaceDTO.getContents());
+//            existingEntity.setShare(myplaceDTO.isShare());
+//            existingEntity.setUserId(myplaceDTO.getUserId());
+//
+//            // if문으로 파일이 있는 경우, 없는 경우 처리 다르게
+//
+//            myplaceRepository.save(existingEntity);
+//
+//            MyplaceDTO updatedDTO = sharedService.findByPlaceId(myplaceDTO.getId());
+//            return updatedDTO;
+//        } else {
+//            return null;
+//        }
+//    }
+
     public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
         MyplaceEntity existingEntity = myplaceRepository.findById(myplaceDTO.getId()).orElse(null);
         if (existingEntity != null) {
@@ -93,7 +116,19 @@ public class MyplaceService {
             existingEntity.setShare(myplaceDTO.isShare());
             existingEntity.setUserId(myplaceDTO.getUserId());
 
-            // if문으로 파일이 있는 경우, 없는 경우 처리 다르게
+            // 파일이 있는 경우 처리
+            if (myplaceDTO.getFileAttached() == 1) {
+                List<MyplaceFileEntity> fileEntities = new ArrayList<>();
+                for (int i = 0; i < myplaceDTO.getOriginalFileName().size(); i++) {
+                    String originalFileName = myplaceDTO.getOriginalFileName().get(i);
+                    if (originalFileName != null) {
+                        String storedFileName = myplaceDTO.getStoredFileName().get(i);
+                        MyplaceFileEntity fileEntity = MyplaceFileEntity.toMyplaceFileEntity(existingEntity, originalFileName, storedFileName);
+                        fileEntities.add(fileEntity);
+                    }
+                }
+                existingEntity.setMyplaceEntityList(fileEntities);
+            }
 
             myplaceRepository.save(existingEntity);
 
@@ -103,6 +138,8 @@ public class MyplaceService {
             return null;
         }
     }
+
+
 
     public void delete(int id) {
 

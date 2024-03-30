@@ -6,6 +6,7 @@ import restaurant.restaurant.entity.MyplaceFileEntity;
 
 public interface MyplaceFileRepository extends JpaRepository<MyplaceFileEntity, Integer>{
 
-//    void deleteByOriginalFileName(String originalFileName);
+    void deleteByStoredFileNameAndOriginalFileName(String storedFileName, String originalFileName);
+
 }
 

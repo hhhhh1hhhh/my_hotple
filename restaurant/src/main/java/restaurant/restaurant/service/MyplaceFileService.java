@@ -10,17 +10,20 @@ import java.io.File;
 @RequiredArgsConstructor
 public class MyplaceFileService {
 
-    private final MyplaceFileRepository myplaceFileRepository;
+//    private final MyplaceFileRepository myplaceFileRepository;
 
-    public void deleteFileByOriginalFileName(String originalFileName) {
-        // 여기에 실제 파일 삭제 또는 파일 정보 삭제 작업을 수행하는 코드를 작성합니다.
-        // 예시: 파일 시스템에서 파일 삭제
-         File fileToDelete = new File("/path/to/your/files/" + originalFileName);
+    public void deleteFile(String storedFileName, String originalFileName) {
+        System.out.println("storedFileName: " + storedFileName);
+        System.out.println("originalFileName: " + originalFileName);
+
+         File fileToDelete = new File("c:/springboot_img/" + storedFileName);
          if (fileToDelete.exists()) {
              fileToDelete.delete();
+             System.out.println("로컬에서 삭제되었습니다.");
          }
 
-        // 예시: 데이터베이스에서 파일 정보 삭제
-         myplaceFileRepository.deleteByOriginalFileName(originalFileName);
+//         // 데이터베이스에서 파일 정보 삭제
+//         myplaceFileRepository.deleteByOriginalFileName(originalFileName);
+//        System.out.println(originalFileName + "을 데이터베이스에서 삭제했습니다.");
     }
 }

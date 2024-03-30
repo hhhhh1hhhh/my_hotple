@@ -50,7 +50,7 @@
                     <span th:text="${file}"></span>
                     <!-- 이 파일에 대한 삭제 버튼 -->
                     <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
-                    <button type="button" class="btn btn-link" onclick="deleteFile('${file}')">삭제</button>
+                    <button type="button" class="btn btn-link" th:attr="onclick='confirmDelete(\'' + ${file} + '\', \'' + ${myplaceEdit.storedFileName[iterStat.index]} + '\')'">삭제</button>
                     <br>
                 </div>
             </div>
@@ -69,4 +69,38 @@
     </fieldset>
 </form>
 </body>
+<script>
+    function confirmDelete(originalFileName, storedFileName) {
+        if (confirm('정말로 파일을 삭제하시겠습니까?')) {
+            deleteFile(originalFileName, storedFileName);
+        }
+    }
+
+    function deleteFile(originalFileName, storedFileName) {
+        console.log('Deleting file(original):', originalFileName);
+        console.log('Deleting file(stored):', storedFileName);
+
+        // JSON 형식으로 데이터 전송
+        var requestData = {
+            originalFileName: encodeURIComponent(originalFileName),
+            storedFileName: encodeURIComponent(storedFileName)
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/myplace/deleteFile",
+            headers: {
+                "X-CSRF-TOKEN": $('[name="_csrf"]').val()
+            },
+            contentType: "application/json",
+            data: JSON.stringify(requestData),
+            success: function(response) {
+                console.log('파일 삭제 성공:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('파일 삭제 실패:', error);
+            }
+        });
+    }
+</script>
 </html>

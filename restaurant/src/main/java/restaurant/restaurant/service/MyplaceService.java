@@ -83,28 +83,6 @@ public class MyplaceService {
     }
 
 
-//    public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
-//        MyplaceEntity existingEntity = myplaceRepository.findById(myplaceDTO.getId()).orElse(null);
-//        if (existingEntity != null) {
-//
-//            existingEntity.setPlaceName(myplaceDTO.getPlaceName());
-//            existingEntity.setAddress(myplaceDTO.getAddress());
-//            existingEntity.setCategory(myplaceDTO.getCategory());
-//            existingEntity.setContents(myplaceDTO.getContents());
-//            existingEntity.setShare(myplaceDTO.isShare());
-//            existingEntity.setUserId(myplaceDTO.getUserId());
-//
-//            // if문으로 파일이 있는 경우, 없는 경우 처리 다르게
-//
-//            myplaceRepository.save(existingEntity);
-//
-//            MyplaceDTO updatedDTO = sharedService.findByPlaceId(myplaceDTO.getId());
-//            return updatedDTO;
-//        } else {
-//            return null;
-//        }
-//    }
-
     public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
         MyplaceEntity existingEntity = myplaceRepository.findById(myplaceDTO.getId()).orElse(null);
         if (existingEntity != null) {
@@ -140,9 +118,8 @@ public class MyplaceService {
     }
 
 
-
     public void delete(int id) {
-
         myplaceRepository.deleteById(id);
     }
+
 }

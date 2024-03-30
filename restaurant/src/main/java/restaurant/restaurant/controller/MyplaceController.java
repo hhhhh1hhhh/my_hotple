@@ -14,7 +14,10 @@ import restaurant.restaurant.dto.MyplaceDTO;
 import restaurant.restaurant.service.*;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -106,4 +109,26 @@ public class MyplaceController {
         return "redirect:/myplace/list";
     }
 
+
+    @PostMapping("/deleteFile")
+    public ResponseEntity<String> deleteFile(@RequestBody Map<String, String> requestData) {
+        try {
+            String storedFileName = requestData.get("storedFileName");
+            String originalFileName = requestData.get("originalFileName");
+
+            String decodedStoredFileName = URLDecoder.decode(storedFileName, "UTF-8");
+            String decodedOriginalFileName = URLDecoder.decode(originalFileName, "UTF-8");
+
+            myplaceFileService.deleteFile(decodedStoredFileName, decodedOriginalFileName);
+            return ResponseEntity.ok("파일을 성공적으로 삭제했습니다.");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("파일 삭제 중 오류가 발생했습니다.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("파일 삭제 중 오류가 발생했습니다.");
+        }
+    }
 }

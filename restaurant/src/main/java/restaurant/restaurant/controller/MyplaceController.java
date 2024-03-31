@@ -93,7 +93,7 @@ public class MyplaceController {
 
 
     @PostMapping("/edit")
-    public String myplaceEdit(@ModelAttribute MyplaceDTO myplaceDTO, Model model) {
+    public String myplaceEdit(@ModelAttribute MyplaceDTO myplaceDTO, Model model) throws IOException {
 
         MyplaceDTO myplace = myplaceService.edit(myplaceDTO);
         model.addAttribute("myplace", myplace);

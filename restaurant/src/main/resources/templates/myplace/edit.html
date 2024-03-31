@@ -8,7 +8,7 @@
 <body>
 <nav th:replace="fragments.html :: main-nav"></nav>
 <h3 style="margin: 50px; text-align: center;">내 장소 수정하기</h3>
-<form name="myplaceForm" action="/myplace/edit" method="post">
+<form name="myplaceForm" action="/myplace/edit" method="post" enctype="multipart/form-data">
     <fieldset>
         <div class="form-group"
              bis_skin_checked="1" style="width: 40%; margin: 0 auto;">
@@ -39,7 +39,7 @@
         </div>
         <div class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto;">
             <label for="formFile" class="form-label mt-4">파일 첨부하기</label>
-            <input class="form-control" type="file" id="formFile" name="photo">
+            <input class="form-control" type="file" id="formFile" name="file" multiple>
         </div>
         <!-- 파일이 첨부되어 있는 경우 표시할 부분 -->
         <div th:unless="${#lists.isEmpty(myplaceEdit.originalFileName) or myplaceEdit.originalFileName[0] == ''}" class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto;">
@@ -105,6 +105,5 @@
             }
         });
     }
-
 </script>
 </html>

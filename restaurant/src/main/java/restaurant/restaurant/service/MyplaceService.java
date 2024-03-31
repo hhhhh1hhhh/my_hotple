@@ -83,9 +83,25 @@ public class MyplaceService {
     }
 
 
-    public MyplaceDTO edit(MyplaceDTO myplaceDTO) {
+
+    public MyplaceDTO edit(MyplaceDTO myplaceDTO) throws IOException{
         MyplaceEntity existingEntity = myplaceRepository.findById(myplaceDTO.getId()).orElse(null);
         if (existingEntity != null) {
+            
+            // 업로드한 새로운 파일들이 있는지 확인
+            if (myplaceDTO.getFile() != null && !myplaceDTO.getFile().isEmpty()) {
+                System.out.println("1번 if문");
+                for (MultipartFile file : myplaceDTO.getFile()) {
+                    String originalFilename = file.getOriginalFilename(); // 파일의 이름을 가져옴
+                    String storedFileName = System.currentTimeMillis() + "_" + originalFilename; // 서버 저장용 이름을 만듦
+                    String savePath = "c:/springboot_img/" + storedFileName; // 저장 경로 설정
+                    file.transferTo(new File(savePath)); // 해당 경로에 파일 저장
+
+                    // 새로운 파일 엔티티 생성 및 저장
+                    MyplaceFileEntity myplaceFileEntity = MyplaceFileEntity.toMyplaceFileEntity(existingEntity, originalFilename, storedFileName);
+                    myplaceFileRepository.save(myplaceFileEntity);
+                }
+            }
 
             existingEntity.setPlaceName(myplaceDTO.getPlaceName());
             existingEntity.setAddress(myplaceDTO.getAddress());
@@ -94,28 +110,34 @@ public class MyplaceService {
             existingEntity.setShare(myplaceDTO.isShare());
             existingEntity.setUserId(myplaceDTO.getUserId());
 
-            // 파일이 있는 경우 처리
-            if (myplaceDTO.getFileAttached() == 1) {
-                List<MyplaceFileEntity> fileEntities = new ArrayList<>();
-                for (int i = 0; i < myplaceDTO.getOriginalFileName().size(); i++) {
-                    String originalFileName = myplaceDTO.getOriginalFileName().get(i);
-                    if (originalFileName != null) {
-                        String storedFileName = myplaceDTO.getStoredFileName().get(i);
-                        MyplaceFileEntity fileEntity = MyplaceFileEntity.toMyplaceFileEntity(existingEntity, originalFileName, storedFileName);
-                        fileEntities.add(fileEntity);
-                    }
-                }
-                existingEntity.setMyplaceEntityList(fileEntities);
-            }
-
             myplaceRepository.save(existingEntity);
 
             MyplaceDTO updatedDTO = sharedService.findByPlaceId(myplaceDTO.getId());
             return updatedDTO;
+
         } else {
             return null;
         }
     }
+
+//    public MyplaceDTO edit(MyplaceDTO myplaceDTO) throws IOException {
+//        MyplaceEntity existingEntity = myplaceRepository.findById(myplaceDTO.getId()).orElse(null);
+//        if (existingEntity != null) {
+//            // 기존 코드는 여기에 있음
+//
+//            // 파일을 받았는지 여부를 확인
+//            if (myplaceDTO.getFile() != null) {
+//                System.out.println("파일을 받았습니다.");
+//            } else {
+//                System.out.println("파일을 받지 못했습니다.");
+//            }
+//
+//            // 나머지 코드는 여기에 있음
+//        } else {
+//            return null;
+//        }
+//        return myplaceDTO;
+//    }
 
 
     public void delete(int id) {

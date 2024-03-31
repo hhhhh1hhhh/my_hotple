@@ -96,11 +96,15 @@
             data: JSON.stringify(requestData),
             success: function(response) {
                 console.log('파일 삭제 성공:', response);
+                // 삭제된 파일의 HTML 요소를 삭제
+                var fileToDelete = $("span:contains('" + originalFileName + "')").parent();
+                fileToDelete.remove();
             },
             error: function(xhr, status, error) {
                 console.error('파일 삭제 실패:', error);
             }
         });
     }
+
 </script>
 </html>

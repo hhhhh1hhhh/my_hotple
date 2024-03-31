@@ -28,7 +28,7 @@ public class MyplaceService {
     private final MyplaceFileRepository myplaceFileRepository;
 
     public void save(MyplaceDTO myplaceDTO) throws IOException {
-        System.out.println("띠용: " + myplaceDTO.getFile().isEmpty());
+
         // 파일 첨부 여부에 따라 로직 분리
         if (myplaceDTO.getFile().isEmpty()) {
             // 첨부 파일 없음.

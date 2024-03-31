@@ -87,10 +87,9 @@ public class MyplaceService {
     public MyplaceDTO edit(MyplaceDTO myplaceDTO) throws IOException{
         MyplaceEntity existingEntity = myplaceRepository.findById(myplaceDTO.getId()).orElse(null);
         if (existingEntity != null) {
-            
+
             // 업로드한 새로운 파일들이 있는지 확인
             if (myplaceDTO.getFile() != null && !myplaceDTO.getFile().isEmpty()) {
-                System.out.println("1번 if문");
                 for (MultipartFile file : myplaceDTO.getFile()) {
                     String originalFilename = file.getOriginalFilename(); // 파일의 이름을 가져옴
                     String storedFileName = System.currentTimeMillis() + "_" + originalFilename; // 서버 저장용 이름을 만듦
@@ -119,26 +118,6 @@ public class MyplaceService {
             return null;
         }
     }
-
-//    public MyplaceDTO edit(MyplaceDTO myplaceDTO) throws IOException {
-//        MyplaceEntity existingEntity = myplaceRepository.findById(myplaceDTO.getId()).orElse(null);
-//        if (existingEntity != null) {
-//            // 기존 코드는 여기에 있음
-//
-//            // 파일을 받았는지 여부를 확인
-//            if (myplaceDTO.getFile() != null) {
-//                System.out.println("파일을 받았습니다.");
-//            } else {
-//                System.out.println("파일을 받지 못했습니다.");
-//            }
-//
-//            // 나머지 코드는 여기에 있음
-//        } else {
-//            return null;
-//        }
-//        return myplaceDTO;
-//    }
-
 
     public void delete(int id) {
         myplaceRepository.deleteById(id);

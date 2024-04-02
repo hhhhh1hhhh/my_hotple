@@ -9,10 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import restaurant.restaurant.dto.CommentDTO;
-import restaurant.restaurant.dto.MyplaceDTO;
-import restaurant.restaurant.service.AuthService;
-import restaurant.restaurant.service.CommentService;
+import restaurant.restaurant.comment.dto.CommentDTO;
+import restaurant.restaurant.myplace.dto.MyplaceDTO;
+import restaurant.restaurant.auth.service.AuthService;
+import restaurant.restaurant.comment.service.CommentService;
 import restaurant.restaurant.service.SharedService;
 
 import java.util.List;

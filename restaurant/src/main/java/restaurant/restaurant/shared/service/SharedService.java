@@ -7,10 +7,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import restaurant.restaurant.dto.MyplaceDTO;
-import restaurant.restaurant.entity.MyplaceEntity;
-import restaurant.restaurant.repository.LikesRepository;
-import restaurant.restaurant.repository.MyplaceRepository;
+import restaurant.restaurant.myplace.dto.MyplaceDTO;
+import restaurant.restaurant.myplace.entity.MyplaceEntity;
+import restaurant.restaurant.likes.repository.LikesRepository;
+import restaurant.restaurant.myplace.repository.MyplaceRepository;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,11 +5,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import restaurant.restaurant.dto.CommentDTO;
-import restaurant.restaurant.dto.MyplaceDTO;
+import restaurant.restaurant.myplace.dto.MyplaceDTO;
 import restaurant.restaurant.entity.CommentEntity;
-import restaurant.restaurant.entity.MyplaceEntity;
+import restaurant.restaurant.myplace.entity.MyplaceEntity;
 import restaurant.restaurant.repository.CommentRepository;
-import restaurant.restaurant.repository.MyplaceRepository;
+import restaurant.restaurant.myplace.repository.MyplaceRepository;
 
 import java.util.ArrayList;
 import java.util.List;

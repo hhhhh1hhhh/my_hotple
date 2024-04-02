@@ -3,6 +3,7 @@ package restaurant.restaurant.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import restaurant.restaurant.myplace.entity.MyplaceEntity;
 
 @Entity
 @Getter

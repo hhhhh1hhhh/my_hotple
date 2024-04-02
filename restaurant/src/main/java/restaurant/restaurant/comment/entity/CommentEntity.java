@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import restaurant.restaurant.dto.CommentDTO;
+import restaurant.restaurant.myplace.entity.MyplaceEntity;
 
 @Entity
 @Getter

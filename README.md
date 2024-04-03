@@ -44,19 +44,64 @@
 - ### 실행화면
   <details>
   <summary>😋 메인 페이지</summary>
-    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/55f96f88-927d-4d7b-9fe0-4d3c2f804509)
+    
+    **- 메인 페이지(로그인 되지 않은 상태)**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/1907176a-f5e8-4d2d-b157-651a72c6e67c)
+    </br>
+
+    **- 메인 페이지(로그인 상태)**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/ef5d2d82-8f96-45e8-81e2-cbc865ba931e)
+    - 사용자가 로그인한 경우, 상단에 로그인한 사용자의 정보가 표시된다.
   </details>
   </br>
   
   <details>
   <summary>👥 회원 관련</summary>
-  - 회원 관련
+
+    **- 회원가입 페이지**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/b8c3c167-8de8-4458-8cee-549860f5bb4a)
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/e541c64c-3a08-41cb-a7d2-32943d1914f7)
+    - 회원가입 시, 입력한 정보의 유효성을 검사한 후, 정상적으로 입력되었을 경우 회원 정보를 저장하고 로그인 페이지로 이동한다.
+    </br>
+    
+    **- 로그인 페이지**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/4dd59a33-b68a-4b4f-b2d8-96075f1a62f6)
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/a1f03335-e0af-4ba0-9541-8b52fdae679e)
+    - 로그인이 실패한 경우 실패 이유를 메시지로 표시하며, 로그인에 성공하면 메인 페이지("/")로 redirect된다.
   </details>
   </br>
 
   <details>
-  <summary>📖 게시글 관련</summary>
-  - 게시글 관련
+  <summary>📖 게시판(My Place) 관련</summary>
+
+    **- My Place 페이지**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/91a1c08e-563f-4696-bf7e-57ec8ee2a387)
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/5097a9ee-9201-42f0-be11-46d4b9ac17d3)
+    - 자신이 작성한 글 목록을 페이징 처리하여 보여준다.
+    </br>
+
+    **- 내 장소 저장하기**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/3b6765ef-2b61-41ac-913e-c6cf0fe65d96)
+    - 로그인한 사용자는 장소 정보와 파일을 저장할 수 있으며, 공유 여부를 설정할 수 있다.
+    - 장소 이름과 주소는 필수 입력 사항으로 입력하지 않으면 저장할 수 없다.
+    - 글 작성을 완료하면, 글 목록(myplace/list)으로 redirect된다.
+    </br>
+ 
+    **- My place 글 상세보기**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/e58867ad-195c-4398-a150-b31f87a9a668)
+    - Kakao API를 사용하여 저장된 주소를 지도에 매핑하여 위치를 확인할 수 있다.
+    </br>
+    
+    **- My place 글 수정하기**
+
+  </details>
+  </br>
+
+    <details>
+  <summary>🎡 게시판(Shared) 관련</summary>
+    **- Shared 페이지**
+
+
   </details>
   </br>
 

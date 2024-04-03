@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title th:text="${myplace.placeName}"></title>
-  <div th:replace="fragments.html :: main-head"></div>
+  <div th:replace="~{layout/head.html :: main-head}"></div>
   <style>
     .image-container {
       max-width: 100%;
@@ -12,7 +12,7 @@
   </style>
 </head>
 <body>
-<nav th:replace="fragments.html :: main-nav"></nav>
+<nav th:replace="~{layout/nav.html :: main-nav}"></nav>
 <div class="card mb-3" bis_skin_checked="1" style="width: 60%; margin: 50px auto;">
   <h3 class="card-header" th:text="${myplace.placeName}"></h3>
   <div class="card-body" bis_skin_checked="1">
@@ -44,6 +44,9 @@
   </div>
   <div class="card-footer text-muted" bis_skin_checked="1"
        th:text="*{#temporals.format(myplace.createdTime, 'yyyy-MM-dd HH:mm:ss')}">
+  </div>
+  <div class="card-footer text-muted" bis_skin_checked="1"
+       th:if="${myplace.updatedTime != null}" th:text="*{#temporals.format(myplace.updatedTime, 'yyyy-MM-dd HH:mm:ss')} + '(수정됨)'">
   </div>
 </div>
 <div id="comment-list">

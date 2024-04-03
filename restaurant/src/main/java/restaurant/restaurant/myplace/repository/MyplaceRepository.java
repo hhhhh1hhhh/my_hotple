@@ -1,4 +1,4 @@
-package restaurant.restaurant.repository;
+package restaurant.restaurant.myplace.repository;
 
 
 import org.springframework.data.domain.Page;
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import restaurant.restaurant.entity.MyplaceEntity;
+import restaurant.restaurant.myplace.entity.MyplaceEntity;
 
 import java.util.List;
 

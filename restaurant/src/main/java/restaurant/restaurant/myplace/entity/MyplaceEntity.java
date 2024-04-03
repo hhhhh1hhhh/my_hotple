@@ -1,9 +1,13 @@
-package restaurant.restaurant.entity;
+package restaurant.restaurant.myplace.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import restaurant.restaurant.dto.MyplaceDTO;
+import restaurant.restaurant.comment.entity.CommentEntity;
+import restaurant.restaurant.entity.*;
+import restaurant.restaurant.likes.entity.LikesEntity;
+import restaurant.restaurant.myplace.dto.MyplaceDTO;
+import restaurant.restaurant.user.entity.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +17,7 @@ import java.util.List;
 @Setter
 @Getter
 @Table(name="myplace_entity")
-public class MyplaceEntity extends BaseEntity{
+public class MyplaceEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

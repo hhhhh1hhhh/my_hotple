@@ -1,4 +1,4 @@
-package restaurant.restaurant.service;
+package restaurant.restaurant.myplace.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -8,11 +8,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
-import restaurant.restaurant.dto.MyplaceDTO;
-import restaurant.restaurant.entity.MyplaceEntity;
-import restaurant.restaurant.entity.MyplaceFileEntity;
-import restaurant.restaurant.repository.MyplaceFileRepository;
-import restaurant.restaurant.repository.MyplaceRepository;
+import restaurant.restaurant.myplace.dto.MyplaceDTO;
+import restaurant.restaurant.myplace.entity.MyplaceEntity;
+import restaurant.restaurant.myplace.entity.MyplaceFileEntity;
+import restaurant.restaurant.myplace.repository.MyplaceFileRepository;
+import restaurant.restaurant.myplace.repository.MyplaceRepository;
+import restaurant.restaurant.shared.service.SharedService;
 
 import java.io.File;
 import java.io.IOException;

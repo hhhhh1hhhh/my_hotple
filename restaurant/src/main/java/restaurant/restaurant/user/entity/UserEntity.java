@@ -1,4 +1,4 @@
-package restaurant.restaurant.entity;
+package restaurant.restaurant.user.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

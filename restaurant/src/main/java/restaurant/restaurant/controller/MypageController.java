@@ -5,11 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import restaurant.restaurant.dto.CommentDTO;
-import restaurant.restaurant.dto.LikesDTO;
-import restaurant.restaurant.service.AuthService;
-import restaurant.restaurant.service.CommentService;
-import restaurant.restaurant.service.LikesService;
+import restaurant.restaurant.comment.dto.CommentDTO;
+import restaurant.restaurant.likes.dto.LikesDTO;
+import restaurant.restaurant.auth.service.AuthService;
+import restaurant.restaurant.comment.service.CommentService;
+import restaurant.restaurant.likes.service.LikesService;
 
 import java.util.List;
 

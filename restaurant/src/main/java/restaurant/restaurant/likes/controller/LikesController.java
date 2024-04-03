@@ -1,4 +1,4 @@
-package restaurant.restaurant.controller;
+package restaurant.restaurant.likes.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import restaurant.restaurant.dto.LikesDTO;
-import restaurant.restaurant.service.LikesService;
+import restaurant.restaurant.likes.dto.LikesDTO;
+import restaurant.restaurant.likes.service.LikesService;
 
 @Controller
 @RequiredArgsConstructor

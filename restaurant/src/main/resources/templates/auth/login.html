@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <div th:replace="fragments.html :: main-head"></div>
+  <div th:replace="~{layout/head.html :: main-head}"></div>
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>My Hotple Login Page</title>
 </head>
 <body>
-<nav th:replace="fragments.html :: main-nav"></nav>
+<nav th:replace="~{layout/nav.html :: main-nav}"></nav>
 <form th:action="@{/loginProc}" method="post" name="loginForm">
   <div class="form-group" bis_skin_checked="1" style="width: 40%; margin: 0 auto; text-align: center;">
     <h2 style="margin-top: 50px; margin-bottom: 50px">로그인</h2>

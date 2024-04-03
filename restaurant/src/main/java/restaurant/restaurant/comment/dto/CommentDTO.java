@@ -1,9 +1,9 @@
-package restaurant.restaurant.dto;
+package restaurant.restaurant.comment.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import restaurant.restaurant.entity.CommentEntity;
+import restaurant.restaurant.comment.entity.CommentEntity;
 
 
 import java.time.LocalDateTime;

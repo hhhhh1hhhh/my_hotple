@@ -1,4 +1,4 @@
-package restaurant.restaurant.dto;
+package restaurant.restaurant.likes.dto;
 
 import lombok.Getter;
 import lombok.Setter;

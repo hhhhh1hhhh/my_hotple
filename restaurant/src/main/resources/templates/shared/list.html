@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments.html :: main-head"></div>
+    <div th:replace="~{layout/head.html :: main-head}"></div>
     <title>My Hotple Shared Place Page</title>
 </head>
 <body>
-<nav th:replace="fragments.html :: main-nav"></nav>
+<nav th:replace="~{layout/nav.html :: main-nav}"></nav>
 <h2 style="margin-top: 50px; margin-bottom: 50px; text-align: center">Shared Place List</h2>
 <table class="table table-hover" style="text-align: center; width: 75%;  margin: 40px auto;">
     <thead>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments.html :: main-head"></div>
+    <div th:replace="~{layout/head.html :: main-head}"></div>
     <title>My Hotple myplace page</title>
 </head>
 <body>
-<nav th:replace="fragments.html :: main-nav"></nav>
+<nav th:replace="~{layout/nav.html :: main-nav}"></nav>
 <h2 style="margin-top: 50px; margin-bottom: 50px; text-align: center">My Place List</h2>
 <div class="d-flex justify-content-end mb-3">
     <button type="button" class="btn btn-secondary"
@@ -13,7 +13,6 @@
             onclick="location.href='myplace/write.html'"
             th:onclick="|location.href='@{/myplace/write}'|">장소 추가하기</button>
 </div>
-
 <div class="row justify-content-center">
     <div class="col-md-5" th:each="myplace: ${myplaceDTOPage}">
         <div class="card border-secondary mb-3" style="text-align: center" >

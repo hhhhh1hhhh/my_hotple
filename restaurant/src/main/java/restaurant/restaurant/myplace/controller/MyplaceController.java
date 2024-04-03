@@ -1,4 +1,4 @@
-package restaurant.restaurant.controller;
+package restaurant.restaurant.myplace.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -9,9 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import restaurant.restaurant.dto.CommentDTO;
-import restaurant.restaurant.dto.MyplaceDTO;
-import restaurant.restaurant.service.*;
+import restaurant.restaurant.auth.service.AuthService;
+import restaurant.restaurant.comment.dto.CommentDTO;
+import restaurant.restaurant.comment.service.CommentService;
+import restaurant.restaurant.myplace.dto.MyplaceDTO;
+import restaurant.restaurant.myplace.service.MyplaceFileService;
+import restaurant.restaurant.myplace.service.MyplaceService;
+import restaurant.restaurant.shared.service.SharedService;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

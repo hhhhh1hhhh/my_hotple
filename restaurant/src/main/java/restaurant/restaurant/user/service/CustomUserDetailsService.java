@@ -1,12 +1,12 @@
-package restaurant.restaurant.service;
+package restaurant.restaurant.user.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import restaurant.restaurant.dto.CustomUserDetails;
-import restaurant.restaurant.entity.UserEntity;
-import restaurant.restaurant.repository.UserRepository;
+import restaurant.restaurant.user.dto.CustomUserDetails;
+import restaurant.restaurant.user.entity.UserEntity;
+import restaurant.restaurant.user.repository.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

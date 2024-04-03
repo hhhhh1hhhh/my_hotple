@@ -1,9 +1,9 @@
-package restaurant.restaurant.controller;
+package restaurant.restaurant.auth.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import restaurant.restaurant.dto.JoinDTO;
-import restaurant.restaurant.service.JoinService;
+import restaurant.restaurant.auth.dto.JoinDTO;
+import restaurant.restaurant.auth.service.JoinService;
 
 @Controller
 public class JoinController {
@@ -17,7 +17,7 @@ public class JoinController {
     @GetMapping("/join")
     public String joinP() {
 
-        return "join";
+        return "auth/join";
     }
 
     @PostMapping("/joinProc")

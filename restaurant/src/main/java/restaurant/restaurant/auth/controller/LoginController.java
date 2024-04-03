@@ -1,4 +1,4 @@
-package restaurant.restaurant.controller;
+package restaurant.restaurant.auth.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +19,7 @@ public class LoginController {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
 
-        return "/login";
+        return "auth/login";
     }
 
 }

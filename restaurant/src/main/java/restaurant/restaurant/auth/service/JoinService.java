@@ -1,13 +1,13 @@
-package restaurant.restaurant.service;
+package restaurant.restaurant.auth.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import restaurant.restaurant.dto.JoinDTO;
-import restaurant.restaurant.entity.UserEntity;
-import restaurant.restaurant.repository.UserRepository;
+import restaurant.restaurant.auth.dto.JoinDTO;
+import restaurant.restaurant.user.entity.UserEntity;
+import restaurant.restaurant.user.repository.UserRepository;
 
 
 @Service

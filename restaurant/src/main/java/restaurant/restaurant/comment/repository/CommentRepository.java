@@ -1,7 +1,7 @@
-package restaurant.restaurant.repository;
+package restaurant.restaurant.comment.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import restaurant.restaurant.entity.CommentEntity;
+import restaurant.restaurant.comment.entity.CommentEntity;
 import restaurant.restaurant.myplace.entity.MyplaceEntity;
 
 import java.util.List;

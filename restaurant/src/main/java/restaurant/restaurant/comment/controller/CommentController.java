@@ -1,12 +1,12 @@
-package restaurant.restaurant.controller;
+package restaurant.restaurant.comment.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import restaurant.restaurant.dto.CommentDTO;
-import restaurant.restaurant.service.CommentService;
+import restaurant.restaurant.comment.dto.CommentDTO;
+import restaurant.restaurant.comment.service.CommentService;
 
 import java.util.List;
 

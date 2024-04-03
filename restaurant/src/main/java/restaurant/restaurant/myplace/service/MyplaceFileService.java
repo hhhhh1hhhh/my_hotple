@@ -1,9 +1,9 @@
-package restaurant.restaurant.service;
+package restaurant.restaurant.myplace.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import restaurant.restaurant.repository.MyplaceFileRepository;
+import restaurant.restaurant.myplace.repository.MyplaceFileRepository;
 
 import java.io.File;
 

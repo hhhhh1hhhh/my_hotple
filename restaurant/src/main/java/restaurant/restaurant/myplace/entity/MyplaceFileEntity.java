@@ -1,8 +1,9 @@
-package restaurant.restaurant.entity;
+package restaurant.restaurant.myplace.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import restaurant.restaurant.entity.BaseEntity;
 
 @Entity
 @Getter

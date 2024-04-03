@@ -1,8 +1,8 @@
-package restaurant.restaurant.dto;
+package restaurant.restaurant.user.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import restaurant.restaurant.entity.UserEntity;
+import restaurant.restaurant.user.entity.UserEntity;
 
 import java.util.ArrayList;
 import java.util.Collection;

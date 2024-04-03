@@ -1,4 +1,4 @@
-package restaurant.restaurant.service;
+package restaurant.restaurant.shared.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

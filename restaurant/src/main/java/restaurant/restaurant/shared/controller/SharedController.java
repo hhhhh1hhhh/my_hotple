@@ -1,4 +1,4 @@
-package restaurant.restaurant.controller;
+package restaurant.restaurant.shared.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -13,7 +13,7 @@ import restaurant.restaurant.comment.dto.CommentDTO;
 import restaurant.restaurant.myplace.dto.MyplaceDTO;
 import restaurant.restaurant.auth.service.AuthService;
 import restaurant.restaurant.comment.service.CommentService;
-import restaurant.restaurant.service.SharedService;
+import restaurant.restaurant.shared.service.SharedService;
 
 import java.util.List;
 

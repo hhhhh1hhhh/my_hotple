@@ -1,8 +1,9 @@
-package restaurant.restaurant.entity;
+package restaurant.restaurant.likes.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import restaurant.restaurant.user.entity.UserEntity;
 import restaurant.restaurant.myplace.entity.MyplaceEntity;
 
 @Entity

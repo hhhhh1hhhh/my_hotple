@@ -1,4 +1,4 @@
-package restaurant.restaurant.service;
+package restaurant.restaurant.auth.service;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

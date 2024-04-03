@@ -1,14 +1,14 @@
-package restaurant.restaurant.service;
+package restaurant.restaurant.likes.service;
 
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import restaurant.restaurant.dto.LikesDTO;
-import restaurant.restaurant.entity.LikesEntity;
-import restaurant.restaurant.entity.UserEntity;
-import restaurant.restaurant.repository.LikesRepository;
-import restaurant.restaurant.repository.UserRepository;
+import restaurant.restaurant.likes.dto.LikesDTO;
+import restaurant.restaurant.likes.entity.LikesEntity;
+import restaurant.restaurant.user.entity.UserEntity;
+import restaurant.restaurant.likes.repository.LikesRepository;
+import restaurant.restaurant.user.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;

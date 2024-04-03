@@ -1,16 +1,17 @@
-package restaurant.restaurant.entity;
+package restaurant.restaurant.comment.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import restaurant.restaurant.dto.CommentDTO;
+import restaurant.restaurant.comment.dto.CommentDTO;
+import restaurant.restaurant.entity.BaseEntity;
 import restaurant.restaurant.myplace.entity.MyplaceEntity;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "comment_table")
-public class CommentEntity extends BaseEntity{
+public class CommentEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

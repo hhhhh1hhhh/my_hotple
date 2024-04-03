@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="fragments.html :: main-head"></div>
+    <div th:replace="~{layout/head.html :: main-head}"></div>
     <link th:href="@{/css/mainmap.css}" href="../css/mainMap.css" rel="stylesheet">
     <title>My Hotple My Page</title>
 </head>
 <body>
-<nav th:replace="fragments.html :: main-nav"></nav>
+<nav th:replace="~{layout/nav.html :: main-nav}"></nav>
 <h2 align="center" style="margin-top: 50px; margin-bottom: 50px">My Page</h2>
 <div style="display: flex; justify-content: center;">
     <ol class="breadcrumb">

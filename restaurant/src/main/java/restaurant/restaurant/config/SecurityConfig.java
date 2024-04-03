@@ -8,8 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import restaurant.restaurant.service.CustomAuthenticationFailureHandler;
-import restaurant.restaurant.service.CustomAuthenticationSuccessHandler;
+import restaurant.restaurant.auth.service.CustomAuthenticationFailureHandler;
+import restaurant.restaurant.auth.service.CustomAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity

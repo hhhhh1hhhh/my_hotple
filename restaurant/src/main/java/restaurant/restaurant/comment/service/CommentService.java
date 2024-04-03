@@ -1,14 +1,14 @@
-package restaurant.restaurant.service;
+package restaurant.restaurant.comment.service;
 
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import restaurant.restaurant.dto.CommentDTO;
+import restaurant.restaurant.comment.dto.CommentDTO;
 import restaurant.restaurant.myplace.dto.MyplaceDTO;
-import restaurant.restaurant.entity.CommentEntity;
+import restaurant.restaurant.comment.entity.CommentEntity;
 import restaurant.restaurant.myplace.entity.MyplaceEntity;
-import restaurant.restaurant.repository.CommentRepository;
+import restaurant.restaurant.comment.repository.CommentRepository;
 import restaurant.restaurant.myplace.repository.MyplaceRepository;
 
 import java.util.ArrayList;

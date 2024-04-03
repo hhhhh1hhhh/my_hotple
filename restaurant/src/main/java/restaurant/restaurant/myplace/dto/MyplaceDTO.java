@@ -1,10 +1,10 @@
-package restaurant.restaurant.dto;
+package restaurant.restaurant.myplace.dto;
 
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
-import restaurant.restaurant.entity.MyplaceEntity;
-import restaurant.restaurant.entity.MyplaceFileEntity;
-import restaurant.restaurant.entity.UserEntity;
+import restaurant.restaurant.myplace.entity.MyplaceEntity;
+import restaurant.restaurant.myplace.entity.MyplaceFileEntity;
+import restaurant.restaurant.user.entity.UserEntity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

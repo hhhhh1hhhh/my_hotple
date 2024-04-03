@@ -1,7 +1,7 @@
-package restaurant.restaurant.repository;
+package restaurant.restaurant.likes.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import restaurant.restaurant.entity.LikesEntity;
+import restaurant.restaurant.likes.entity.LikesEntity;
 
 import java.util.List;
 

@@ -44,7 +44,7 @@
 - ### 실행화면
   <details>
   <summary>😋 메인 페이지</summary>
-  - 메인 페이지
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/55f96f88-927d-4d7b-9fe0-4d3c2f804509)
   </details>
   </br>
   

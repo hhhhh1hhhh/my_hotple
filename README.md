@@ -93,13 +93,21 @@
     </br>
     
     **- My place 글 수정하기**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/fbdc6edf-e75c-4eb4-bbb7-5980d9c3d6f2)
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/9c9894d4-a008-4303-a8c2-60dfa18ff782)
+
+
+  
 
   </details>
   </br>
 
     <details>
   <summary>🎡 게시판(Shared) 관련</summary>
+      
     **- Shared 페이지**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/b0b559cf-255f-4168-adfc-76c7ccd501d2)
+
 
 
   </details>
@@ -113,7 +121,12 @@
 
     <details>
   <summary>🏠 마이 페이지</summary>
-  - 마이 페이지
+      
+  **- 마이 페이지**
+  ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/554c520b-ec75-4319-84cf-cc4516eb6996)
+  ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/648ace62-c6e3-47c8-8e7c-ba176f07e7a1)
+
+  
   </details>
   </br>
 

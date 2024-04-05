@@ -95,9 +95,14 @@
     **- My place 글 수정하기**
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/fbdc6edf-e75c-4eb4-bbb7-5980d9c3d6f2)
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/9c9894d4-a008-4303-a8c2-60dfa18ff782)
+    - 게시글 수정 시, 첨부된 파일을 삭제할 수 있다.
+    - 파일 삭제 시,  Confirm 으로 파일 삭제 여부를 물어보며, '확인'을 누를 경우 파일은 즉시 삭제된다.
+    - 게시글 수정 시, 수정된 시간이 표시된다.
+    </br>
 
-
-  
+    **- My place 글 삭제하기**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/d8cd5baf-d410-4b66-802d-78eb16b92b1c)
+    - 게시글 삭제 시, Confirm 창으로 파일 삭제 여부를 물어보며, '확인'을 누르면 my place 게시글 목록으로 redirect 된다.
 
   </details>
   </br>
@@ -107,6 +112,17 @@
       
     **- Shared 페이지**
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/b0b559cf-255f-4168-adfc-76c7ccd501d2)
+    - 사용자들이 작성한 게시글 중 공유가 허용된 게시글(공유 여부 = true) 목록을 페이징 처리하여 보여준다.
+    </br>
+    
+    **- 좋아요 기능**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/81014e71-a246-429f-bdf4-97c433792a01)
+    - 로그인 한 사용자가 처음으로 '좋아요'를 누르면, 좋아요가 등록된다.
+    - 이미 '좋아요'를 누른 게시글에 다시 '좋아'요를 누르면, 좋아요가 취소된다.
+    - 로그인하지 않은 사용자가 '좋아요'를 누르면, 로그인이 필요하다는 alert 창으로 알려준다.
+
+    
+  
 
 
 
@@ -115,7 +131,17 @@
 
   <details>
   <summary>🌟 댓글 관련</summary>
-  - 댓글 관련
+
+    **- 댓글 작성 페이지(로그인 되지 않은 상태)**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/b2e9032f-a7b7-4422-8f2b-a3e53243ed0c)
+    </br>
+
+    **- 댓글 작성 페이지(로그인 상태)**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/4f9531fb-6881-4fa6-9241-0c0d169d5179)
+    - 사용자가 로그인한 경우, 로그인한 유저의 이름이 댓글창에 표시된다.
+    - 자신이 작성한 상단에 댓글인 경우, 수정 및 삭제가 가능하다.
+
+
   </details>
   </br>
 

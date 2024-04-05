@@ -19,7 +19,6 @@ public class CommentController {
     private final CommentService commentService;
 
 
-
     @PostMapping("/save")
     public ResponseEntity save(@ModelAttribute CommentDTO commentDTO) {
         System.out.println("commentDTO = " + commentDTO);
@@ -55,7 +54,7 @@ public class CommentController {
         if (myplaceId != -1) {
             return "redirect:/shared/" + myplaceId;
         } else {
-            return "redirect:/sgared/";
+            return "redirect:/shared/";
         }
     }
 

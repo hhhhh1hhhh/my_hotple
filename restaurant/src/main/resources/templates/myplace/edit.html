@@ -9,6 +9,7 @@
 <nav th:replace="~{layout/nav.html :: main-nav}"></nav>
 <h3 style="margin: 50px; text-align: center;">내 장소 수정하기</h3>
 <form name="myplaceForm" action="/myplace/edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="_method" value="put"/>
     <fieldset>
         <div class="form-group"
              bis_skin_checked="1" style="width: 40%; margin: 0 auto;">
@@ -49,7 +50,7 @@
                 <div th:each="file, iterStat : ${myplaceEdit.originalFileName}">
                     <span th:text="${file}"></span>
                     <!-- 이 파일에 대한 삭제 버튼 -->
-                    <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+                    <input type="hidden" name="_csrf" th:method="delete" th:value="${_csrf.token}" />
                     <button type="button" class="btn btn-link" th:attr="onclick='confirmDelete(\'' + ${file} + '\', \'' + ${myplaceEdit.storedFileName[iterStat.index]} + '\')'">삭제</button>
                     <br>
                 </div>
@@ -87,7 +88,7 @@
         };
 
         $.ajax({
-            type: "POST",
+            type: "DELETE",
             url: "/myplace/deleteFile",
             headers: {
                 "X-CSRF-TOKEN": $('[name="_csrf"]').val()

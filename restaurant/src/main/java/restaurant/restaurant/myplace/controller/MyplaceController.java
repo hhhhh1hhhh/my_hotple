@@ -96,7 +96,7 @@ public class MyplaceController {
     }
 
 
-    @PostMapping("/edit")
+    @PutMapping("/edit")
     public String myplaceEdit(@ModelAttribute MyplaceDTO myplaceDTO, Model model) throws IOException {
 
         MyplaceDTO myplace = myplaceService.edit(myplaceDTO);
@@ -106,7 +106,7 @@ public class MyplaceController {
     }
 
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String myplaceDel(@PathVariable int id) {
         myplaceService.delete(id);
 
@@ -114,7 +114,7 @@ public class MyplaceController {
     }
 
 
-    @PostMapping("/deleteFile")
+    @DeleteMapping("/deleteFile")
     public ResponseEntity<String> deleteFile(@RequestBody Map<String, String> requestData) {
         try {
             String storedFileName = requestData.get("storedFileName");

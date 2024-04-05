@@ -36,10 +36,13 @@
     <div id="map" style="width:100%;height:350px;"></div>
   </ul>
   <div class="card-body" bis_skin_checked="1">
-    <div style="text-align: right">
-      <a th:href="@{/myplace/list(page=${page})}" class="card-link">목록</a>
-      <a th:if="${myplace.user.username == #authentication.name}" th:href="@{|/myplace/edit/${myplace.id}|}" class="card-link">수정</a>
-      <a th:if="${myplace.user.username == #authentication.name}" th:href="@{|/myplace/delete/${myplace.id}|}" class="card-link" onclick="confirmDelete()">삭제</a>
+    <div style="text-align: right; display: flex; justify-content: flex-end;">
+      <button th:onclick="|location.href='@{/myplace/list(page=${page})}'|" class="btn btn-link">목록</button>
+      <button th:if="${myplace.user.username == #authentication.name}" th:onclick="|location.href='@{|/myplace/edit/${myplace.id}|}'|" class="btn btn-link">수정</button>
+      <form id="deleteForm" th:if="${myplace.user.username == #authentication.name}"
+            th:action="@{|/myplace/delete/${myplace.id}|}" th:method="delete" >
+        <button type="submit" class="btn btn-link" onclick="return confirm('삭제하시겠습니까?')">삭제</button>
+      </form>
     </div>
   </div>
   <div class="card-footer text-muted" bis_skin_checked="1"

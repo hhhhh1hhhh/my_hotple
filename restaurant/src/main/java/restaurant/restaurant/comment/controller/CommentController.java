@@ -33,7 +33,7 @@ public class CommentController {
 
     }
 
-    @PostMapping("/edit/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<CommentDTO> editComment(@PathVariable int id, @RequestParam String commentContents) {
         // 댓글 수정 로직 수행
         CommentDTO commentDTO = commentService.editComment(id, commentContents);
@@ -47,7 +47,7 @@ public class CommentController {
     }
 
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String commentDel(@PathVariable int id) {
         int myplaceId = commentService.deleteAndGetMyplaceId(id);
 

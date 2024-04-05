@@ -10,7 +10,7 @@ import restaurant.restaurant.myplace.entity.MyplaceEntity;
 @Entity
 @Getter
 @Setter
-@Table(name = "comment_table")
+@Table(name = "comment_entity")
 public class CommentEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

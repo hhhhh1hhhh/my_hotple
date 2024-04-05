@@ -9,7 +9,7 @@ import restaurant.restaurant.myplace.entity.MyplaceEntity;
 @Entity
 @Getter
 @Setter
-@Table(name = "like_table")
+@Table(name = "like_entity")
 public class LikesEntity {
 
     @Id

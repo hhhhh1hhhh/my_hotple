@@ -121,15 +121,10 @@
     - 이미 '좋아요'를 누른 게시글에 다시 '좋아'요를 누르면, 좋아요가 취소된다.
     - 로그인하지 않은 사용자가 '좋아요'를 누르면, 로그인이 필요하다는 alert 창으로 알려준다.
 
-    
-  
-
-
-
   </details>
   </br>
 
-  <details>
+   <details>
   <summary>🌟 댓글 관련</summary>
 
     **- 댓글 작성 페이지(로그인 되지 않은 상태)**
@@ -139,8 +134,18 @@
     **- 댓글 작성 페이지(로그인 상태)**
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/4f9531fb-6881-4fa6-9241-0c0d169d5179)
     - 사용자가 로그인한 경우, 로그인한 유저의 이름이 댓글창에 표시된다.
-    - 자신이 작성한 상단에 댓글인 경우, 수정 및 삭제가 가능하다.
+    - 자신이 작성한 댓글인 경우, 수정 및 삭제가 가능하다.
+    </br>
 
+    **- 댓글 수정하기**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/2d9d8dbc-7165-460d-8855-d6c655e95136)
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/c9f43a47-985e-411d-b735-1d5bfa2f8fee)
+    - 댓글 수정 시, 수정된 시간이 표시된다.
+    </br>
+ 
+    **- 댓글 삭제하기**
+    ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/d8cd5baf-d410-4b66-802d-78eb16b92b1c)
+    - 댓글 삭제 시, Confirm 창으로 댓글 삭제 여부를 물어보며, '확인'을 누르면 댓글을 작성한 게시글로 redirect된다.
 
   </details>
   </br>
@@ -151,16 +156,18 @@
   **- 마이 페이지**
   ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/554c520b-ec75-4319-84cf-cc4516eb6996)
   ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/648ace62-c6e3-47c8-8e7c-ba176f07e7a1)
-
+  ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/3040b54d-89f5-4812-82bc-b8fe778ea891)
+  - 로그인한 사용자는 자신의 계정 정보를 확인할 수 있다.
+  - comment 탭을 클릭하면, 작성한 댓글에 대한 정보를 확인할 수 있다.
+  - likes 탭을 클릭하면, 좋아요 누른 게시글을 확인할 수 있다.
   
   </details>
   </br>
 
-
-
-</br></br>
-
 ## 📄 2. 시스템 구조
+
+### - 패키지 구조
+
   <details>
   <summary>패키지 구조</summary>
   
@@ -279,14 +286,78 @@
   </details>
   </br>
 
+### - DB 설계
+![db table](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/9c161672-a593-44c8-b177-c06f9197f7ea)
 
-- ### 패키지 구조
+<details>
 
+  <summary>테이블</summary>
 
-- ### DB 설계
+  **- user_entity**
+  |칼럼명|데이터 타입|조건|설명|
+  |:---|:---|:---|:---|
+  |id|int|PK, Not Null, Auto Increment|기본 키|
+  |nickname|varchar||이름|
+  |nickname|varchar||이메일|Unique|
+  |password|varchar||비밀번호|
+  |role|varchar||역할|
 
+  </br>
 
-- ### API 설계
+  **- myplace_entity**
+  |칼럼명|데이터 타입|조건|설명|
+  |:---|:---|:---|:---|
+  |id|int|PK, Not Null, Auto Increment|기본 키|
+  |fileAttached|int|Not Null|파일 첨부 여부|
+  |share|bit|Not Null|게시글 공유 여부|
+  |userId|int|FK|사용자 번호|
+  |view|int|Not Null|조회수|
+  |createTime|datetime||작성 시간|
+  |updateTime|datetime||수정 시간|
+  |contents|varchar||내용|
+  |address|varchar|Not Null|주소|
+  |category|varchar||카테고리|
+  |placeName|varchar|Not Null|장소 이름|
+
+  </br>
+
+  **- myplace_file_entity**
+  |칼럼명|데이터 타입|조건|설명|
+  |:---|:---|:---|:---|
+  |id|bigint|PK, Not Null, Auto Increment|기본 키|
+  |myplace_id|int|FK|게시글 번호|
+  |createTime|datetime||작성 시간|
+  |updateTime|datetime||수정 시간|
+  |originalFileName|varchar||파일 이름|
+  |storedFileName|varchar||서버 저장용 파일이름|
+
+   </br>
+
+  **- comment_entity**
+  |칼럼명|데이터 타입|조건|설명|
+  |:---|:---|:---|:---|
+  |id|int|PK, Not Null, Auto Increment|기본 키|
+  |myplace_id|int|FK|게시글 번호|
+  |createTime|datetime||작성 시간|
+  |updateTime|datetime||수정 시간|
+  |commentWriter|varchar|Not Null|댓글 작성자|
+  |commentContents|varchar||댓글 내용|
+  |commentWriterEmail|varchar||댓글 작성자 이메일|
+
+  </br>
+
+  **- like_entity**
+  |칼럼명|데이터 타입|조건|설명|
+  |:---|:---|:---|:---|
+  |id|int|PK, Not Null, Auto Increment|기본 키|
+  |myplaceId|int|FK|게시글 번호|
+  |userId|int|FK|사용자 번호|
+
+</details>
+
+</br>
+
+### - API 설계
   
 </br></br>
 

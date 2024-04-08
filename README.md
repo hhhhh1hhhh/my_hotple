@@ -45,7 +45,7 @@
   <details>
   <summary>😋 메인 페이지</summary>
     
-    **- 메인 페이지(로그인 되지 않은 상태)**
+    **- 메인 페이지(로그인되지 않은 상태)**
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/1907176a-f5e8-4d2d-b157-651a72c6e67c)
     </br>
 
@@ -67,7 +67,7 @@
     **- 로그인 페이지**
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/4dd59a33-b68a-4b4f-b2d8-96075f1a62f6)
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/a1f03335-e0af-4ba0-9541-8b52fdae679e)
-    - 로그인이 실패한 경우 실패 이유를 메시지로 표시하며, 로그인에 성공하면 메인 페이지("/")로 redirect된다.
+    - 로그인이 실패하면 실패 원인 메시지로 표시하며, 로그인에 성공하면 메인 페이지("/")로 redirect 된다.
   </details>
   </br>
 
@@ -96,7 +96,7 @@
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/fbdc6edf-e75c-4eb4-bbb7-5980d9c3d6f2)
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/9c9894d4-a008-4303-a8c2-60dfa18ff782)
     - 게시글 수정 시, 첨부된 파일을 삭제할 수 있다.
-    - 파일 삭제 시,  Confirm 으로 파일 삭제 여부를 물어보며, '확인'을 누를 경우 파일은 즉시 삭제된다.
+    - 파일 삭제 시,  Confirm 으로 파일 삭제 여부를 물어보며, '확인'을 누르면 파일은 즉시 삭제된다.
     - 게시글 수정 시, 수정된 시간이 표시된다.
     </br>
 
@@ -107,7 +107,7 @@
   </details>
   </br>
 
-    <details>
+  <details>
   <summary>🎡 게시판(Shared) 관련</summary>
       
     **- Shared 페이지**
@@ -127,14 +127,14 @@
    <details>
   <summary>🌟 댓글 관련</summary>
 
-    **- 댓글 작성 페이지(로그인 되지 않은 상태)**
+    **- 댓글 작성 페이지(로그인되지 않은 상태)**
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/b2e9032f-a7b7-4422-8f2b-a3e53243ed0c)
     </br>
 
     **- 댓글 작성 페이지(로그인 상태)**
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/4f9531fb-6881-4fa6-9241-0c0d169d5179)
-    - 사용자가 로그인한 경우, 로그인한 유저의 이름이 댓글창에 표시된다.
-    - 자신이 작성한 댓글인 경우, 수정 및 삭제가 가능하다.
+    - 사용자가 로그인한 경우, 로그인한 유저의 이름이 댓글 창에 표시된다.
+    - 자신이 작성한 댓글인 경우, 수정 및 삭제를 할 수 있다.
     </br>
 
     **- 댓글 수정하기**
@@ -145,7 +145,7 @@
  
     **- 댓글 삭제하기**
     ![image](https://github.com/hhhhh1hhhh/my_hotple/assets/93113812/d8cd5baf-d410-4b66-802d-78eb16b92b1c)
-    - 댓글 삭제 시, Confirm 창으로 댓글 삭제 여부를 물어보며, '확인'을 누르면 댓글을 작성한 게시글로 redirect된다.
+    - 댓글 삭제 시, Confirm 창으로 댓글 삭제 여부를 물어보며, '확인'을 누르면 댓글을 작성한 게시글로 redirect 된다.
 
   </details>
   </br>

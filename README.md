@@ -358,10 +358,28 @@
 </br>
 
 ### - API 설계
-  
+|Method|URL|Description|
+|------|---|---|
+|GET|/|메인 페이지|
+|GET|/join|회원가입 페이지|
+|POST|/joinProc|회원가입 정보 처리|
+|GET|/login|로그인 페이지|
+|POST|/loginProc|로그인 처리|
+|GET|/logout|로그아웃 처리|
+|GET|/mypage|마이 페이지|
+|GET|/myplace/list?page={번호}|myplace 페이징 목록|
+|GET|/myplace/{id}?page={번호}|myplace 게시글 상세보기|
+|GET|/myplace/write|myplace 저장하기 페이지|
+|POST|/myplace/save|myplace 게시글 저장 처리|
+|GET|/myplace/edit/{id}|myplace 게시글 수정 페이지|
+|PUT|/myplace/edit|myplace 게시글 수정 처리|
+|DELETE|/myplace/delete/{id}|myplace 게시글 삭제 처리|
+|DELETE|/myplace/deleteFile|첨부 파일 삭제 처리|
+|GET|/shared/list?page={번호}|shared(공유된 게시글) 페이징 목록|
+|GET|/shared/{id}?page={번호}|shared(공유된 게시글) 상세보기|
+|POST|/ike/add|게시글 좋아요 토글|
+|POST|/comment/save|댓글 저장 처리|
+|PUT|/comment/edit/{id}|댓글 수정 처리|
+|DELETE|/delete/{id}|댓글 삭제 처리|
+
 </br></br>
-
-
-## 😊 3. 마치며
-- ### 프로젝트 후기
-
